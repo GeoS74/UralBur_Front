@@ -6,7 +6,7 @@
       return (
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand " href="index.html"><img src="images/logo.svg" alt="Logo" className="logo"/></a>
+          <a class="navbar-brand " href="index.html"><img src="images/logo.svg" alt="Logo" width="60px" height="60px"/></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -41,7 +41,7 @@
             <div class="navbar-nav ml-auto">
               <form method="post" class="search-form">
                 <span class="icon ion ion-search"></span>
-                <input type="text" class="form-control" placeholder="Search..."></input>
+                <input type="text" class="form-control" placeholder="Поиск..."></input>
               </form>
             </div>
             
@@ -52,23 +52,3 @@
     }
     root.render(/*#__PURE__*/React.createElement(Header, null));
   })();
-
-
-
-  // const root = ReactDOM.createRoot(document.getElementById("header"));
-
-  // function Header() {
-  //   return /*#__PURE__*/React.createElement("h1", {
-  //     onClick: () => setCount(count + 1)
-  //   }, "hello ", count);
-  // }
-  // root.render(/*#__PURE__*/React.createElement(Header, null));
-
-// (() => {
-//   const MyComponent = (
-//     <div>
-//       <h1>hello</h1>
-//     </div>
-//     );
-//   const root = ReactDOM.render(MyComponent, document.getElementById("component"))
-// })()
