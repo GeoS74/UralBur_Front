@@ -1,0 +1,17 @@
+{
+  "name": "uralbur_front",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bab_build": "babel --presets @babel/preset-react ./src/component.jsx -o ./build/component.js & babel --presets @babel/preset-react ./src/menu.jsx -o ./build/menu.js",
+    "build": "node build"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@babel/cli": "^7.25.7",
+    "@babel/preset-react": "^7.25.7"
+  }
+}
