@@ -1,12 +1,17 @@
 const root = ReactDOM.createRoot(document.getElementById("slider"));
-import {flag, loaderFun, homeSlider, contentWayPoint} from '../../js/main.js'
+import {flag, loaderFun, dropdownFun, homeSlider, noneLoop, owlCarousel1, owlCarousel2, contentWayPoint} from '../../js/main.js'
 
 function Sliders({slides}) {
   React.useEffect(() => {
     if (!flag) {
       loaderFun();
     };
-    homeSlider();    
+
+    homeSlider();
+    dropdownFun();
+    noneLoop();
+    owlCarousel1();
+    owlCarousel2();
     contentWayPoint();   
   })  
 
