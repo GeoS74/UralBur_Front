@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
-    <title>Industrial &mdash; Website Template by Colorlin</title>
+    <title>Ural Bur</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
     
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Oxygen:400,700" rel="stylesheet">
@@ -18,100 +18,19 @@
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
 
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>      
+
   </head>
   <body>
     
-    <header role="banner">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand " href="index.html">Industrial</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarsExample05">
-            <ul class="navbar-nav pl-md-5 ml-auto">
-              <li class="nav-item">
-                <a class="nav-link active" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="projects.html">Projects</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html">Architectural Design</a>
-                  <a class="dropdown-item" href="services.html">Interior</a>
-                  <a class="dropdown-item" href="services.html">Building</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-
-            <div class="navbar-nav ml-auto">
-              <form method="post" class="search-form">
-                <span class="icon ion ion-search"></span>
-                <input type="text" class="form-control" placeholder="Search...">
-              </form>
-            </div>
-            
-          </div>
-        </div>
-      </nav>
-    </header>
+    <header role="banner" id="header"></header>
     <!-- END header -->
 
     <div class="top-shadow"></div>
 
-    <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image: url('images/industrial_hero_1.jpg');">
-        <div class="container">
-          <div class="row slider-text align-items-center justify-content-center">
-            <div class="col-lg-7 text-center col-sm-12 element-animate">
-              <div class="btn-play-wrap mx-auto"><p class="mb-4"><a href="https://vimeo.com/59256790" data-fancybox data-ratio="2" class="btn-play"><span class="ion ion-ios-play"></span></a></p></div>
-              <h1 class="mb-4"><span>Первый слайд 1</span></h1>
-              <p class="mb-5 w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias iste ipsa excepturi nostrum sequi molestias?</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="slider-item" style="background-image: url('images/industrial_hero_2.jpg');">
-        <div class="container">
-          <div class="row slider-text align-items-center justify-content-center">
-            <div class="col-lg-7 text-center col-sm-12 element-animate">
-              <div class="btn-play-wrap mx-auto"><p class="mb-4"><a href="https://vimeo.com/59256790" data-fancybox data-ratio="2" class="btn-play"><span class="ion ion-ios-play"></span></a></p></div>
-              <h1><span>Первый слайд 2</span></h1>
-              <p class="mb-5 w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae fuga, hic quae molestias aperiam deserunt!</p>
-            </div>
-          </div>
-        </div>        
-      </div>
-
-      <div class="slider-item" style="background-image: url('images/industrial_hero_3.jpg');">
-        <div class="container">
-          <div class="row slider-text align-items-center justify-content-center">
-            <div class="col-lg-7 text-center col-sm-12 element-animate">
-              <div class="btn-play-wrap mx-auto"><p class="mb-4"><a href="https://vimeo.com/59256790" data-fancybox data-ratio="2" class="btn-play"><span class="ion ion-ios-play"></span></a></p></div>
-              <h1><span>Первый слайд 3</span></h1>
-              <p class="mb-5 w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae fuga, hic quae molestias aperiam deserunt!</p>
-            </div>
-          </div>
-        </div>        
-      </div>
-
-    </section>
-    <!-- END slider -->
-    </div>
-    
+    <section class="home-slider owl-carousel" id="slider"></section>
+    <!-- END slider -->    
 
     <section class="section">
       <div class="container">
@@ -511,7 +430,8 @@
     <script src="js/jquery.fancybox.min.js"></script>
     <script src="js/main.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="components/header/header.js" type="module"></script>
+    <script src="components/slider/slider.js" type="module"></script>
     
   </body>
 </html>
