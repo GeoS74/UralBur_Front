@@ -5,8 +5,6 @@ function Slider({ testimonials }) {
     _animate(jQuery);
   })
 
-  console.log(testimonials)
-
   return testimonials.map((e) => <div key={e.id} class="item">
     <div className="block-33 h-100">
       <div className="vcard d-flex mb-3">

@@ -15,24 +15,21 @@ function Header() {
               <a className="nav-link active" href="index.html">Главная</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="about.html">О компании</a>
+              <a className="nav-link" href="index.html">О компании</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="projects.html">Продукция</a>
+              <a className="nav-link" href="index.html">Продукция</a>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сервис</a>
+              <a className="nav-link dropdown-toggle" href="index.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сервис</a>
               <div className="dropdown-menu" aria-labelledby="dropdown04">
-                <a className="dropdown-item" href="services.html">Запчасти</a>
-                <a className="dropdown-item" href="services.html">Индивидуальные решения</a>
-                <a className="dropdown-item" href="services.html">Обслуживание</a>
+                <a className="dropdown-item" href="index.html">Запчасти</a>
+                <a className="dropdown-item" href="index.html">Индивидуальные решения</a>
+                <a className="dropdown-item" href="index.html">Обслуживание</a>
               </div>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="blog.html">Блог</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="contact.html">Контакты</a>
+              <a className="nav-link" href="index.html">Контакты</a>
             </li>
           </ul>
 
