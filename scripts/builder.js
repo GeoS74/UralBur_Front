@@ -1,20 +1,20 @@
 const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const readFrom = './src';
+const readFrom = '../src';
 
 function listObjects(dir) {
   fs.readdir(dir, (err, files) => {
     if (err) throw err;
-
+   
     for (let file of files) {
-      const pathToFile = path.join(__dirname, dir, file);
+      const pathToFile = path.join(dir, file);
 
       fs.stat(pathToFile, (errStat, status) => {
         if (errStat) throw errStat;
 
         if (status.isDirectory()) {
-          listObjects(`${dir}/${file}`);
+          listObjects(path.join(dir, file));
         } else {
 
           const fname = pathToFile.replace('src', 'build');
@@ -40,4 +40,4 @@ function listObjects(dir) {
   });
 }
 
-listObjects(readFrom);
+listObjects(path.join(__dirname, readFrom));

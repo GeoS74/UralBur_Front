@@ -24,7 +24,7 @@ function Sliders({slides}) {
 
   const listSlide = <>
                       {slides.map(slide => 
-                          <div key={slide.id} className="slider-item" style={{backgroundImage: `url(http://localhost:8080/api/mcontent/static/images/slider/${slide.image.fileName})`}}>
+                          <div key={slide.id} className="slider-item" style={{backgroundImage: `url(http://192.168.0.121:3020/api/mcontent/static/images/slider/${slide.image.fileName})`}}>
                             <div className="container">
                               <div className="row slider-text align-items-center justify-content-center">
                                 <div className="col-lg-7 text-center col-sm-12 element-animate">
@@ -39,7 +39,7 @@ function Sliders({slides}) {
   return (<>{slides.length !== 0 ? listSlide : startSlide}</>)
 }
 
-fetch(`http://localhost:8080/api/mcontent/slider/public/search`)
+fetch(`http://192.168.0.121:3020/api/mcontent/slider/public/search`)
   .then(async response => {
     const res = await response.json();
     return res;
