@@ -4,10 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bab_build": "babel --presets @babel/preset-react ./src/component.jsx -o ./build/component.js & babel --presets @babel/preset-react ./src/menu.jsx -o ./build/menu.js",
-    "build": "node builder"
+    "build": "node ./scripts/builder"
   },
-  "author": "",
+  "author": "A.G. Brothers",
   "license": "ISC",
   "description": "",
   "dependencies": {
