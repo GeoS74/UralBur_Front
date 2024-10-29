@@ -1,11 +1,11 @@
 import serviceHost from "../libs/service.host.js";
 
-function Slider({ testimonials }) {
+function Testimonial({ testimonials }) {
   React.useEffect(() => {
     _animate(jQuery);
   })
 
-  return testimonials.map((e) => <div key={e.id} class="item">
+  return testimonials.map((e) => <div key={e.id} className="item">
     <div className="block-33 h-100">
       <div className="vcard d-flex mb-3">
         <div className="image align-self-center"><img src={`${serviceHost("mcontent")}/api/mcontent/static/images/testimonial/${e.photo.fileName}`} alt={e.name} /></div>
@@ -57,5 +57,5 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public`)
   })
   .then(res => {
     const root = ReactDOM.createRoot(document.getElementById("testimonialSlider"));
-    root.render(<Slider testimonials={res} />);
+    root.render(<Testimonial testimonials={res} />);
   })

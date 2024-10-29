@@ -23,7 +23,6 @@
 </head>
 
 <body>
-
   <header role="banner" id="header"></header>
 
   <div class="top-shadow"></div>
@@ -31,14 +30,18 @@
   <!-- главный слайдер -->
   <section class="home-slider owl-carousel" id="mainSlider"></section>
 
+  <!-- блок решений -->
   <section class="section">
     <div class="container">
       <div class="row mb-5">
         <div class="col-12 text-center">
-          <h2>We'll Handle Any Probles and Solve Them</h2>
+          <h2>Мы можем решить любую проблему</h2>
         </div>
       </div>
+
       <div class="row align-items-stretch">
+
+        <!-- центральная картинка -->
         <div class="col-lg-4 order-lg-2">
           <div class="scaling-image h-100">
             <div class="frame h-100">
@@ -47,150 +50,62 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1">
-
-          <div class="feature-1 d-md-flex">
-            <div class="align-self-center">
-              <span class="ion ion-easel display-4 text-primary"></span>
-              <h3>Ducting Design</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts.</p>
-            </div>
-          </div>
-
-          <div class="feature-1 d-md-flex">
-            <div class="align-self-center">
-              <span class="ion ion-hammer display-4 text-primary"></span>
-              <h3>Stacks Design</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="col-md-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3">
-
-          <div class="feature-1 d-md-flex">
-            <div class="align-self-center">
-              <span class="ion ion-cube display-4 text-primary"></span>
-              <h3>Tanks Design</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts.</p>
-            </div>
-          </div>
-
-          <div class="feature-1 d-md-flex">
-            <div class="align-self-center">
-              <span class="ion ion-clipboard display-4 text-primary"></span>
-              <h3>Structural Design</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts.</p>
-            </div>
-          </div>
-
-        </div>
+        <!-- левый блок из 2-х элементов -->
+        <div class="col-md-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" id="leftSolution"></div>
+        <!-- парвый блок из 2-х элементов -->
+        <div class="col-md-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" id="rightSolution"></div>
 
       </div>
     </div>
   </section>
 
-  <!-- <section class="section bg-light">
+  <!-- блок достижений -->
+  <section class="section bg-light">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-4 element-animate ">
-          <div class="media block-6 d-block text-center">
-            <div class="icon mb-3"><span class="ion-android-notifications text-primary"></span></div>
-            <div class="media-body">
-              <h3 class="heading">Modern Design</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-md-6 col-lg-4 element-animate ">
-          <div class="media block-6 d-block text-center">
-            <div class="icon mb-3"><span class="ion-heart text-primary"></span></div>
-            <div class="media-body">
-              <h3 class="heading">Built With Passion</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-md-6 col-lg-4 element-animate ">
-          <div class="media block-6 d-block text-center">
-            <div class="icon mb-3"><span class="ion-flash text-primary"></span></div>
-            <div class="media-body">
-              <h3 class="heading">Fast Loading</h3>
-              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <div class="row" id="progress"></div>
     </div>
-  </section> -->
-  <!-- END section -->
+  </section>
 
 
-  <!-- Catalog -->
-  <!-- <section class="section border-t pb-0">
+
+
+
+
+
+
+
+
+
+
+  <!-- каталог -->
+  <section class="section border-t pb-0" id="mainCatalogViewer">
     <div class="container">
       <div class="row justify-content-center mb-5 element-animate">
         <div class="col-md-8 text-center">
-          <h2 class=" heading mb-4">Projects</h2>
-          <p class="mb-5 lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-            there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a
-            large language ocean.</p>
+          <h2 class=" heading mb-4">Продукция</h2>
+          <p class="mb-5 lead">Мы поставляем качественную и востребованную всеми компаниями продукцию</p>
         </div>
       </div>
     </div>
+
+
     <div class="container-fluid">
-      <div class="row no-gutters">
-        <div class="col-md-4 element-animate">
-          <a href="project-single.html" class="link-thumbnail">
-            <h3>Ducting Design in Colorado</h3>
-            <span class="ion-plus icon"></span>
-            <img src="images/industrial_img_1.jpg" alt="Free template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4 element-animate">
-          <a href="project-single.html" class="link-thumbnail">
-            <h3>Tanks Project In California</h3>
-            <span class="ion-plus icon"></span>
-            <img src="images/industrial_img_2.jpg" alt="Free template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4 element-animate">
-          <a href="project-single.html" class="link-thumbnail">
-            <h3>Structural Design in New York</h3>
-            <span class="ion-plus icon"></span>
-            <img src="images/industrial_img_3.jpg" alt="Free template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4 element-animate">
-          <a href="project-single.html" class="link-thumbnail">
-            <h3>Stacks Design</h3>
-            <span class="ion-plus icon"></span>
-            <img src="images/industrial_img_4.jpg" alt="Free template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4 element-animate">
-          <a href="project-single.html" class="link-thumbnail">
-            <h3>Intercate Custom</h3>
-            <span class="ion-plus icon"></span>
-            <img src="images/industrial_img_5.jpg" alt="Free template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-        <div class="col-md-4 element-animate">
-          <a href="project-single.html" class="link-thumbnail">
-            <h3>Banker Design</h3>
-            <span class="ion-plus icon"></span>
-            <img src="images/industrial_img_6.jpg" alt="Free template by Free-Template.co" class="img-fluid">
-          </a>
-        </div>
-      </div>
+      <div class="row no-gutters" id="mainCatalog"></div>
 
     </div>
-  </section> -->
+  </section>
   <!-- END section -->
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- блок отзывов -->
   <section class="section bg-light block-11">
@@ -205,59 +120,6 @@
     </div>
     </div>
   </section>
-
-
-  <!-- 
-    <section class="section blog">
-      <div class="container">
-
-        <div class="row justify-content-center mb-5 element-animate">
-          <div class="col-md-8 text-center">
-            <h2 class=" heading mb-4">Blog Posts</h2>
-            <p class="mb-5 lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-
-            <div class="media mb-4 d-md-flex d-block element-animate">
-              <a href="#" class="mr-5"><img src="images/industrial_blog_1.jpg" alt="Free website template by Free-Template.co" class="img-fluid"></a>
-              <div class="media-body">
-                <span class="post-meta">Feb 26th, 2018</span>
-                <h3 class="mt-2 text-black"><a href="#">How to handle any intercate custom design</a></h3>
-                <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                <p><a href="#" class="readmore">Read More <span class="ion-android-arrow-dropright-circle"></span></a></p>
-              </div>
-            </div>
-
-
-
-          </div>
-          <div class="col-md-6">
-            <div class="media mb-4 d-md-flex d-block element-animate">
-              <a href="#" class="mr-5"><img src="images/industrial_blog_2.jpg" alt="Free website template by Free-Template.co" class="img-fluid"></a>
-              <div class="media-body">
-                <span class="post-meta">Feb 26th, 2018</span>
-                <h3 class="mt-2 text-black"><a href="#">How to handle any intercate custom design</a></h3>
-                <p><a href="#" class="readmore">Read More <span class="ion-android-arrow-dropright-circle"></span></a></p>
-              </div>
-            </div>
-
-            <div class="media mb-4 d-md-flex d-block element-animate">
-              <a href="#" class="mr-5"><img src="images/industrial_blog_3.jpg" alt="Free website template by Free-Template.co" class="img-fluid"></a>
-              <div class="media-body">
-                <span class="post-meta">Feb 26th, 2018</span>
-                <h3 class="mt-2 text-black"><a href="#">How to handle any intercate custom design</a></h3>
-                <p><a href="#" class="readmore">Read More <span class="ion-android-arrow-dropright-circle"></span></a></p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section> -->
-
 
   <!-- скачивание прайса -->
   <section class="section bg-primary">
@@ -276,9 +138,8 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-4 mb-5">
-          <h3>About The Industrial</h3>
-          <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-            live the blind texts. .</p>
+          <h3>О промышленной</h3>
+          <p class="mb-5">Мы всегда готовы развиваться и идти в ногу со временем. Выбирая нас вы выбираете качество.</p>
           <ul class="list-unstyled footer-link d-flex footer-social">
             <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
             <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
@@ -287,24 +148,28 @@
           </ul>
 
         </div>
+
         <div class="col-md-5 mb-5 pl-md-5">
-          <h3>Contact Info</h3>
-          <ul class="list-unstyled footer-link">
-            <li class="d-block">
+          <h3>Контакты</h3>
+          <ul class="list-unstyled footer-link" id="contacts">
+           
+            <!-- <li class="d-block">
               <span class="d-block">Address:</span>
               <span>34 Street Name, City Name Here, United States</span>
             </li>
             <li class="d-block"><span class="d-block">Telephone:</span><span>+1 242 4942 290</span></li>
-            <li class="d-block"><span class="d-block">Email:</span><span>info@yourdomain.com</span></li>
+            <li class="d-block"><span class="d-block">Email:</span><span>info@yourdomain.com</span></li> -->
           </ul>
         </div>
+
+
         <div class="col-md-3 mb-5">
-          <h3>Quick Links</h3>
+          <h3>Быстрый доступ</h3>
           <ul class="list-unstyled footer-link">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Disclaimers</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">О компании</a></li>
+            <li><a href="#">Каталог</a></li>
+            <li><a href="#">Сервис</a></li>
+            <li><a href="#">Контакты</a></li>
           </ul>
         </div>
         <div class="col-md-3">
@@ -314,7 +179,6 @@
       <div class="row">
         <div class="col-12 text-md-center text-left">
           <p class="copyright">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;
             <script>document.write(new Date().getFullYear());</script> Все права защищены
           </p>
@@ -341,8 +205,14 @@
   <script src="js/main.js"></script>
   <script src="components/Header/Header.js" type="module"></script>
   <script src="components/Slider/Slider.js" type="module"></script>
+  <script src="components/Solution/Solution.js" type="module"></script>
+  <script src="components/Progress/Progress.js" type="module"></script>
   <script src="components/Testimonial/Testimonial.js" type="module"></script>
   <script src="components/DownloadPrice/DownloadPrice.js" type="module"></script>
+  <script src="components/Contacts/Contacts.js" type="module"></script>
+
+  <script src="components/MainCatalog/MainCatalog.js" type="module"></script>
+
 </body>
 
 </html>
