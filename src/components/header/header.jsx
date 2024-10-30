@@ -1,5 +1,15 @@
-function Header() {
+import serviceHost from "../libs/service.host.js";
+
+const page = window.location.pathname.split("/").pop().slice(0, -5);
+
+function Header({ pageInfo }) {
   React.useEffect(() => _animate(jQuery));
+
+  const titleStr =  pageInfo.title !== '' ? pageInfo.title : 'Урал-Бур';
+  const description = pageInfo.description !== '' ? pageInfo.description : 'Создаем машины для вас';
+  
+  document.title = titleStr;
+  document.querySelector('meta[name="description"]')?.setAttribute('content', description);  
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -69,6 +79,13 @@ function _animate($) {
   // });
 }
 
-const root = ReactDOM.createRoot(document.getElementById("header"));
-root.render(<Header />);
+fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/${page}`)
+  .then(async response => {
+    const res = await response.json();
+    return res;
+  })
+  .then(res => {    
+    const root = ReactDOM.createRoot(document.getElementById("header"));
+    root.render(<Header pageInfo={res}/>);
+  });
 
