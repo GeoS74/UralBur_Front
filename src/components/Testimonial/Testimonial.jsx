@@ -5,7 +5,7 @@ function Slider({ testimonials }) {
     _animate(jQuery);
   })
 
-  return testimonials.map((e) => <div key={e.id} class="item">
+  return testimonials.map((e) => <div key={e.id} className="item">
     <div className="block-33 h-100">
       <div className="vcard d-flex mb-3">
         <div className="image align-self-center"><img src={`${serviceHost("mcontent")}/api/mcontent/static/images/testimonial/${e.photo.fileName}`} alt={e.name} /></div>
