@@ -1,5 +1,5 @@
 import { loader, elementAnimate } from "../libs/common.js";
-import serviceHost from "../libs/service.host.jsx";
+import serviceHost from "../libs/service.host.js";
 
 
 function Slider({ slides }) {
