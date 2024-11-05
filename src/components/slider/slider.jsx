@@ -1,4 +1,4 @@
-import { loader, elementAnimate } from "../libs/common.jsx";
+import { loader, elementAnimate } from "../libs/common.js";
 import serviceHost from "../libs/service.host.jsx";
 
 
