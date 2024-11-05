@@ -1,4 +1,4 @@
-import serviceHost from "../libs/service.host.js";
+import serviceHost from "../libs/service.host.jsx";
 
 const page = window.location.pathname.split("/").pop().slice(0, -5);
 
