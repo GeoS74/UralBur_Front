@@ -6,8 +6,7 @@ function Header({ pageInfo }) {
   React.useEffect(() => _animate(jQuery));
 
   const titleStr =  pageInfo.title !== '' ? pageInfo.title : 'Урал-Бур';
-  const description = pageInfo.description !== '' ? pageInfo.description : 'Создаем машины для вас';
-  
+  const description = pageInfo.description !== '' ? pageInfo.description : 'Создаем машины для вас';  
   document.title = titleStr;
   document.querySelector('meta[name="description"]')?.setAttribute('content', description);  
 
