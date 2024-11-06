@@ -8,21 +8,21 @@ const defaulMessage = ['Вы еще думаете, а мы уже cделали
                       'Каждая машина продумывается для вас']
 
 function Solution({ info }) {
-
   if (info.length > 3) {
     shuffle(info)
-    info = info.slice(0, 2)
+    info = info.slice(0, 3)
   } else if (info.length < 3) {
     let i = info.length
-    while(i < 4) {
-      info.push({id: defaulId[i], cssClass: defaulClass[i], title: defaulTitle[i], message: defaulMessage[i]})
+    while(i < 3) {
+      const tempObject = {id: defaulId[i], cssClass: defaulClass[i], title: defaulTitle[i], message: defaulMessage[i]}
+      info.push(tempObject)
       i++
     }    
   }
 
   return info.map((e) => <div key={e.id} className="col-md-6 col-lg-4 element-animate ">
                             <div className="media block-6 d-block text-center">
-                              <div className="icon mb-3"><span className="ion-flash text-primary"></span></div>
+                              <div className="icon mb-3"><span className={`${e.cssClass} text-primary`}></span></div>
                               <div className="media-body">
                                 <h3 className="heading">{e.title}</h3>
                                 <p>{e.message}</p>

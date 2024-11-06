@@ -13,8 +13,9 @@ function Progress({ info }) {
     info = info.slice(0, 4)
   } else if (info.length < 4) {
     let i = info.length
-    while(i < 5) {
-      info.push({cssClass: defaulClass[i], title: defaulTitle[i], message: defaulMessage[i]})
+    while(i < 4) {
+      const tempObject = {cssClass: defaulClass[i], title: defaulTitle[i], message: defaulMessage[i]}
+      info.push(tempObject)
       i++
     }
   }
