@@ -1,6 +1,6 @@
 import serviceHost from "../libs/service.host.js";
 
-const page = window.location.pathname.split("/").pop().slice(0, -5);
+const page = window.location.pathname.split("/").pop().slice(0, -5) || 'index';
 
 function Header({ pageInfo }) {
   React.useEffect(() => _animate(jQuery));
