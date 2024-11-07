@@ -1,24 +1,11 @@
 import serviceHost from "../libs/service.host.js";
 
-const defaulClass = ['ion-android-alarm-clock', 'ion-android-calendar', 'ion-android-car', 'ion-android-call']
-const defaulTitle = ['Время важно для нас', 'Мы создаем историю каждый день', 'Создаем уникальные решения', 'Всегда на связи']
-const defaulMessage = ['Вы еще думаете, а мы уже сделали', 
-                      'На рынке более 10 лет', 
-                      'Наши машины работают по всему миру', 
-                      'Наши клиенты возвращаются еще']
-
 function Progress({ info }) {
   if (info.length > 4) {
     shuffle(info)
     info = info.slice(0, 4)
-  } else if (info.length < 4) {
-    let i = info.length
-    while(i < 4) {
-      const tempObject = {cssClass: defaulClass[i], title: defaulTitle[i], message: defaulMessage[i]}
-      info.push(tempObject)
-      i++
-    }
   }
+  
   return (<>
     <div className="col-lg-4 order-lg-2">
       <div className="scaling-image h-100">

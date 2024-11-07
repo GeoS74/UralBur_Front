@@ -1,23 +1,14 @@
 import serviceHost from "../libs/service.host.js";
+import { elementAnimate } from "../libs/common.js";
 
-const defaulId = ['sdhbfpWJHPFwh732468f8w6v0', 'sdhbfpWJHPFwh732468f8w6v1', 'sdhbfpWJHPFwh732468f8w6v2',]
-const defaulClass = ['ion-android-alarm-clock', 'ion-android-calendar', 'ion-android-car']
-const defaulTitle = ['Время важно для нас', 'Все в срок', 'Наше решение для вас']
-const defaulMessage = ['Вы еще думаете, а мы уже cделали', 
-                      'Чательно выполняем все в срок', 
-                      'Каждая машина продумывается для вас']
 
 function Solution({ info }) {
+  React.useEffect(() => {
+    elementAnimate('#solution', jQuery);
+  })
   if (info.length > 3) {
     shuffle(info)
     info = info.slice(0, 3)
-  } else if (info.length < 3) {
-    let i = info.length
-    while(i < 3) {
-      const tempObject = {id: defaulId[i], cssClass: defaulClass[i], title: defaulTitle[i], message: defaulMessage[i]}
-      info.push(tempObject)
-      i++
-    }    
   }
 
   return info.map((e) => <div key={e.id} className="col-md-6 col-lg-4 element-animate ">
