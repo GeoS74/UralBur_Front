@@ -1,0 +1,11 @@
+/node_modules
+/public
+/src
+/scripts
+.dockerignore
+.gitignore
+Dockerfile
+.git
+package.json
+package-lock.json
+README.md
