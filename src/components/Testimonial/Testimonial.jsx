@@ -50,7 +50,7 @@ function _animate($) {
   })
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public`)
+fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`)
   .then(async response => {
     const res = await response.json();
     return res;

@@ -18,7 +18,7 @@ function Progress({ progress }) {
 </div>)
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/progress/public/search`)
+fetch(`${serviceHost("mcontent")}/api/mcontent/progress/public/search/?isPublic=1`)
   .then(async response => {
     const res = await response.json();
     return res;

@@ -10,7 +10,7 @@ function Solution({ solutions }) {
   </div>)
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/solution/public/search`)
+fetch(`${serviceHost("mcontent")}/api/mcontent/solution/public/search/?isPublic=1`)
   .then(async response => {
     const res = await response.json();
     return res;
