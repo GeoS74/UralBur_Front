@@ -1,12 +1,10 @@
-import { loader, elementAnimate } from "../libs/common.js";
+import { elementAnimate } from "../libs/common.js";
 import serviceHost from "../libs/service.host.js";
-
 
 function Slider({ slides }) {
   React.useEffect(() => {
     _animate(jQuery);
     elementAnimate('#mainSlider', jQuery);
-    loader(jQuery);
   })
 
   return slides.map((e) => <div key={e.id} className="slider-item" style={{ "backgroundImage": `url('${serviceHost("mcontent")}/api/mcontent/static/images/slider/${e.image.fileName}')` }}>

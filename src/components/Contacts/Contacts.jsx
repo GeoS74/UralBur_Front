@@ -1,6 +1,9 @@
 import serviceHost from "../libs/service.host.js";
+import { loader } from "../libs/common.js";
 
 function Contacts({ contacts }) {
+  React.useEffect(() => loader(jQuery));
+
   return contacts.map((e, i) => <li key={i} className="d-block">
     <span className="d-block">{_getTitle(e.alias)}:</span>
     <span>{e.value}</span>

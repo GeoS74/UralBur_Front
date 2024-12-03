@@ -1,9 +1,7 @@
 import serviceHost from "../libs/service.host.js";
 
 function Testimonial({ testimonials }) {
-  React.useEffect(() => {
-    _animate(jQuery);
-  })
+  React.useEffect(() => _animate(jQuery))
 
   return testimonials.map((e) => <div key={e.id} className="item">
     <div className="block-33 h-100">

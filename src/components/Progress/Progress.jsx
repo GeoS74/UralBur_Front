@@ -2,9 +2,7 @@ import { elementAnimate } from "../libs/common.js";
 import serviceHost from "../libs/service.host.js";
 
 function Progress({ progress }) {
-  React.useEffect(() => {
-    elementAnimate('#progress', jQuery);
-  })
+  React.useEffect(() => lementAnimate('#progress', jQuery));
 
   return progress.map((e) => <div key={e.id} className="col-md-6 col-lg-4 element-animate ">
   <div className="media block-6 d-block text-center">
