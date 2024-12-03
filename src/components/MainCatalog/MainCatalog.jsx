@@ -1,16 +1,16 @@
 function MainCatalog() {
   return <>
-    <div class="container">
-      <div class="row justify-content-center mb-5 element-animate">
-        <div class="col-md-8 text-center">
-          <h2 class=" heading mb-4">Продукция</h2>
-          <p class="mb-5 lead">Мы поставляем качественную и востребованную всеми компаниями продукцию</p>
+    <div className="container">
+      <div className="row justify-content-center mb-5 element-animate">
+        <div className="col-md-8 text-center">
+          <h2 className=" heading mb-4">Продукция</h2>
+          <p className="mb-5 lead">Мы поставляем качественную и востребованную всеми компаниями продукцию</p>
         </div>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row no-gutters">
+    <div className="container-fluid">
+      <div className="row no-gutters">
         <div className="col-md-4 element-animate">
           <a href="project-single.html" className="link-thumbnail">
             <h3>Супер буры</h3>

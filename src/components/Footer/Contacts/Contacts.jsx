@@ -1,13 +1,5 @@
-import serviceHost from "../../libs/service.host.js";
-import { loader, shower } from "../../libs/common.js";
-
 export default function Contacts({ contacts }) {
-  React.useEffect(() => {
-    loader(jQuery);
-    shower(jQuery);
-  });
-
-  return <>
+  return <div className="col-md-5 mb-5 pl-md-5" id="contacts">
     <h3>Контакты</h3>
     <ul className="list-unstyled footer-link">
 
@@ -15,9 +7,9 @@ export default function Contacts({ contacts }) {
         <span className="d-block">{_getTitle(e.alias)}:</span>
         <span>{e.value}</span>
       </li>)}
-      
+
     </ul>
-  </>
+  </div>
 }
 
 function _getTitle(v) {
@@ -30,13 +22,3 @@ function _getTitle(v) {
       return "Email";
   }
 }
-
-fetch(`${serviceHost("mcontent")}/api/mcontent/contact/public`)
-  .then(async response => {
-    const res = await response.json();
-    return res;
-  })
-  .then(res => {
-    const root = ReactDOM.createRoot(document.getElementById("contacts"));
-    root.render(<Contacts contacts={res} />);
-  })
