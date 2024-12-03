@@ -59,7 +59,7 @@ function _animate($) {
     $this.find('.dropdown-menu').removeClass('show');
   });
 
-  $('.navbar .dropdown > a').click(function(){
+  $('.navbar .dropdown > a').click(function () {
     location.href = this.href;
   });
 
@@ -71,4 +71,3 @@ function _animate($) {
 
 const root = ReactDOM.createRoot(document.getElementById("navigate"));
 root.render(<Navigate />);
-

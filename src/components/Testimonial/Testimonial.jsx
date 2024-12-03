@@ -1,8 +1,21 @@
 import serviceHost from "../libs/service.host.js";
 
 function Testimonial({ testimonials }) {
-  React.useEffect(() => _animate(jQuery))
+  React.useEffect(() => _animate(jQuery));
 
+  return <div className="container">
+    <div className="row justify-content-center mb-5">
+      <div className="col-md-8 text-center">
+        <h2 className=" heading mb-4">Отзывы</h2>
+      </div>
+    </div>
+    <div className="nonloop-block-11 owl-carousel" id="testimonialSliderCarousel">
+      <Items testimonials={testimonials} />
+    </div>
+  </div>
+}
+
+function Items({ testimonials }) {
   return testimonials.map((e) => <div key={e.id} className="item">
     <div className="block-33 h-100">
       <div className="vcard d-flex mb-3">
@@ -22,7 +35,7 @@ function Testimonial({ testimonials }) {
 }
 
 function _animate($) {
-  $('#testimonialSlider').owlCarousel({
+  $('#testimonialSliderCarousel').owlCarousel({
     center: false,
     items: 1,
     loop: false,

@@ -1,10 +1,4 @@
-import { loader, elementAnimate } from "../libs/common.js";
-
-function MainCatalog({ slides }) {
-  React.useEffect(() => {
-    elementAnimate('#mainCatalogViewer', jQuery);
-  })
-
+function MainCatalog() {
   return <>
     <div className="col-md-4 element-animate">
       <a href="project-single.html" className="link-thumbnail">
