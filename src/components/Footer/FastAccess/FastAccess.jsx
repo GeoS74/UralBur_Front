@@ -5,7 +5,7 @@ export default function FastAccess() {
       <li><a href="#">О компании</a></li>
       <li><a href="#">Каталог</a></li>
       <li><a href="#">Сервис</a></li>
-      <li><a href="#">Контакты</a></li>
+      <li><a href="contact.html">Контакты</a></li>
     </ul>
   </div>
 }

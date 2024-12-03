@@ -12,16 +12,20 @@ function Navigate() {
         <div className="collapse navbar-collapse" id="navbarsExample05">
           <ul className="navbar-nav pl-md-5 ml-auto">
             <li className="nav-item">
-              <a className="nav-link active" href="index.html">Главная</a>
+              <a className={"nav-link" + _isActive("index.html")} href="index.html">Главная</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="index.html">О компании</a>
+              <a className={"nav-link" + _isActive("about.html")} href="about.html">О компании</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="index.html">Продукция</a>
+              <a className={"nav-link" + _isActive("products.html")} href="products.html">Продукция</a>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="index.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сервис</a>
+
+              {/* эта ссылка должна быть активной сразу для нескольких страниц */}
+              <a className={"nav-link dropdown-toggle" + _isActive(["foo.html", "bar.html"])}
+                href="index.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сервис</a>
+
               <div className="dropdown-menu" aria-labelledby="dropdown04">
                 <a className="dropdown-item" href="index.html">Запчасти</a>
                 <a className="dropdown-item" href="index.html">Индивидуальные решения</a>
@@ -29,7 +33,7 @@ function Navigate() {
               </div>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="index.html">Контакты</a>
+              <a className={"nav-link" + _isActive("contact.html")} href="contact.html">Контакты</a>
             </li>
           </ul>
 
@@ -44,6 +48,16 @@ function Navigate() {
       </div>
     </nav>
   )
+}
+
+// принимает значение или массив значений
+function _isActive(pageName) {
+  const alias = window.location.pathname.split("/").pop() || 'index.html';
+
+  if (Array.isArray(pageName)) {
+    return pageName.indexOf(alias) !== -1 ? ' active' : '';
+  }
+  return pageName == alias ? ' active' : '';
 }
 
 function _animate($) {
