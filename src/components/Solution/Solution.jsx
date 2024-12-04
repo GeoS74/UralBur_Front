@@ -41,7 +41,7 @@ function Items({ items }) {
   </div>)
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/solution/public/search/?isPublic=1`)
+fetch(`${serviceHost("mcontent")}/api/mcontent/solution/public/?isPublic=1`)
   .then(async response => {
     const res = await response.json();
     return res;
