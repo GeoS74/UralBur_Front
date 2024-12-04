@@ -11,7 +11,7 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/${alias}`)
     throw new Error('bad alias page')
   })
   .then(res => {
-    document.title = res.title;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', res.description);
+    document.title = res.meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', res.meta.description);
   })
   .catch(error => console.log(error.message))

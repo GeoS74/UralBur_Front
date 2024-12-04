@@ -2,15 +2,15 @@ import serviceHost from "../libs/service.host.js";
 
 function Team({ team }) {
 
-  return <div class="container">
-    <div class="row justify-content-center mb-5 element-animate">
-      <div class="col-md-8 text-center">
-        <h2 class="heading mb-4">Наша команда</h2>
-        <p class="mb-5 lead">Сотрудники самые опытные и крутые</p>
+  return <div className="container">
+    <div className="row justify-content-center mb-5 element-animate">
+      <div className="col-md-8 text-center">
+        <h2 className="heading mb-4">Наша команда</h2>
+        <p className="mb-5 lead">Сотрудники самые опытные и крутые</p>
       </div>
     </div>
 
-    <div class="row">
+    <div className="row">
       <Items team={team} />
     </div>
   </div>
