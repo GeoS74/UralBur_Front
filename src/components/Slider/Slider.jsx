@@ -1,7 +1,9 @@
 import serviceHost from "../libs/service.host.js";
 
 function Slider({ slides }) {
-  React.useEffect(() => _animate(jQuery))
+  React.useEffect(() => {
+    _animate(jQuery)
+  })
 
   return slides.map((e) => <div key={e.id} className="slider-item" style={{ "backgroundImage": `url('${serviceHost("mcontent")}/api/mcontent/static/images/slider/${e.image.fileName}')` }}>
     <div className="container">

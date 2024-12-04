@@ -1,7 +1,9 @@
 import serviceHost from "../libs/service.host.js";
 
 function Testimonial({ testimonials }) {
-  React.useEffect(() => _animate(jQuery));
+  React.useEffect(() => {
+    _animate(jQuery)
+  });
 
   return <div className="container">
     <div className="row justify-content-center mb-5">
