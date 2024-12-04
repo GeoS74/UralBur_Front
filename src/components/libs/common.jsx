@@ -76,5 +76,6 @@ export function shower($) {
 
 		} , { offset: '95%' } );
 	};
-	contentWayPoint();
+	// contentWayPoint();
+	setTimeout(contentWayPoint, 1);
 }
