@@ -4,12 +4,10 @@ class Connector {
   components = new Map();
 
   add(name) {
-    console.log('add '+name)
     this.components.set(name, 1);
   }
 
   del(name){
-    console.log('del '+name)
     this.components.delete(name);
 
     if(!this.components.size) {
@@ -18,7 +16,6 @@ class Connector {
   }
 
   start() {
-    console.log('все компоненты загружены')
     loader(jQuery);
     shower(jQuery);
   }
