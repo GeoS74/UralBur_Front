@@ -1,4 +1,10 @@
+import connector from "../libs/connector.js";
+
+connector.add("MainCatalog");
+
 function MainCatalog() {
+  React.useEffect(() => connector.del("MainCatalog"));
+
   return <>
     <div className="container">
       <div className="row justify-content-center mb-5 element-animate">

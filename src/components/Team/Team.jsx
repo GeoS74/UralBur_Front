@@ -1,6 +1,10 @@
 import serviceHost from "../libs/service.host.js";
+import connector from "../libs/connector.js";
+
+connector.add("Team");
 
 function Team({ team }) {
+  React.useEffect(() => connector.del("Team"));
 
   return <div className="container">
     <div className="row justify-content-center mb-5 element-animate">

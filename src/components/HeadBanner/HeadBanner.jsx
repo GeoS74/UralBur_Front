@@ -1,6 +1,11 @@
 import serviceHost from "../libs/service.host.js";
+import connector from "../libs/connector.js";
+
+connector.add("HeadBanner");
 
 function HeadBanner({ template }) {
+  React.useEffect(() => connector.del("HeadBanner"));
+
   // return <div className="slider-item" style={{"backgroundImage": `url('${serviceHost("mcontent")}/api/mcontent/static/images/slider/${e.image.fileName}')`}}>
   return <div className="slider-item" style={{"backgroundImage": `url(images/industrial_hero_3.jpg)`}}>
     <div className="container">

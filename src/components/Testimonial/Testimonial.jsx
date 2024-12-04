@@ -1,8 +1,12 @@
 import serviceHost from "../libs/service.host.js";
+import connector from "../libs/connector.js";
+
+connector.add("Testimonial");
 
 function Testimonial({ testimonials }) {
   React.useEffect(() => {
-    _animate(jQuery)
+    _animate(jQuery);
+    connector.del("Testimonial");
   });
 
   return <div className="container">

@@ -1,6 +1,11 @@
 import serviceHost from "../libs/service.host.js";
+import connector from "../libs/connector.js";
+
+connector.add("DownloadPrice");
 
 function DownloadPrice({ price }) {
+  React.useEffect(() => connector.del("DownloadPrice"));
+  
   return <div className="container">
     <div className="row align-items-center" >
       <div className="col-lg-8">

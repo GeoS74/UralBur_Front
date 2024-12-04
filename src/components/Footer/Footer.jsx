@@ -1,14 +1,13 @@
 import serviceHost from "../libs/service.host.js";
-import { loader, shower } from "../libs/common.js";
+import connector from "../libs/connector.js";
 import SocialMedia from "./SocialMedia/SocialMedia.js";
 import Contacts from "./Contacts/Contacts.js";
 import FastAccess from "./FastAccess/FastAccess.js";
 
+connector.add("Footer");
+
 function Footer({ contacts }) {
-  React.useEffect(() => {
-    loader(jQuery);
-    shower(jQuery);
-  });
+  React.useEffect(() => connector.del("Footer"));
 
   return <div className="container">
     <div className="row mb-5">

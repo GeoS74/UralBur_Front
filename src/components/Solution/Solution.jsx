@@ -1,6 +1,11 @@
 import serviceHost from "../libs/service.host.js";
+import connector from "../libs/connector.js";
+
+connector.add("Solution");
 
 function Solution({ solutions }) {
+  React.useEffect(() => connector.del("Solution"));
+
   return <div className="container">
     <div className="row mb-5">
       <div className="col-12 text-center">

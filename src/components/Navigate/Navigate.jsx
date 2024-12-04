@@ -1,5 +1,12 @@
+import connector from "../libs/connector.js";
+
+connector.add("Navigate");
+
 function Navigate() {
-  React.useEffect(() => _animate(jQuery));
+  React.useEffect(() => {
+    connector.del("Navigate");
+    _animate(jQuery);
+  });
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

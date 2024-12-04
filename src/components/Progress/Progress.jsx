@@ -1,6 +1,11 @@
 import serviceHost from "../libs/service.host.js";
+import connector from "../libs/connector.js";
+
+connector.add("Progress");
 
 function Progress({ progress }) {
+  React.useEffect(() => connector.del("Progress"));
+
   return <div className="container">
     <div className="row">
       {progress.map((e) => <div key={e.id} className="col-md-6 col-lg-4 element-animate ">
