@@ -25,13 +25,13 @@ function Navigate() {
               <a className={"nav-link" + _isActive("about.html")} href="about.html">О компании</a>
             </li>
             <li className="nav-item">
-              <a className={"nav-link" + _isActive("products.html")} href="products.html">Продукция</a>
+              <a className={"nav-link" + _isActive("products.html")} href="index.html">Продукция</a>
             </li>
             <li className="nav-item dropdown">
 
               {/* эта ссылка должна быть активной сразу для нескольких страниц */}
               <a className={"nav-link dropdown-toggle" + _isActive(["foo.html", "bar.html"])}
-                href="index.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сервис</a>
+                href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сервис</a>
 
               <div className="dropdown-menu" aria-labelledby="dropdown04">
                 <a className="dropdown-item" href="index.html">Запчасти</a>

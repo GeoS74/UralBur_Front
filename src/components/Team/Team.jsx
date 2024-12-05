@@ -10,7 +10,7 @@ function Team({ team }) {
     <div className="row justify-content-center mb-5 element-animate">
       <div className="col-md-8 text-center">
         <h2 className="heading mb-4">Наша команда</h2>
-        <p className="mb-5 lead">Сотрудники самые опытные и крутые</p>
+        <p className="mb-5 lead">Если вам необходима консультация, наши специалисты помогут вам и ответят на все интересующие вопросы, а также помогут подобрать подходящий тип оборудования</p>
       </div>
     </div>
 
