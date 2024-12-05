@@ -52,8 +52,6 @@ services:
       - MONGO_INITDB_DATABASE=admin
   main:
     image: "geos74/uralbur-front:0.0.1"
-    ports:
-      - "3000:80"
     volumes:
       - ./nginx/front.conf:/etc/nginx/conf.d/default.conf
   cms:
