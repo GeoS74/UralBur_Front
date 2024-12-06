@@ -38,8 +38,7 @@ services:
       - JWT_CHECK=true
       - JWT_SECRET_KEY=secret_key
     volumes:
-      - user-avatar-mcontent:/mcontent/files/photo
-      - files-mcontent:/mcontent/files/images
+      - files-mcontent:/mcontent/files
       - init-db-mcontent:/mcontent/libs/db.init
   db_mcontent:
     image: "mongo"
@@ -65,5 +64,4 @@ volumes:
   db-mauth:
   db-mcontent:
   init-db-mcontent:
-  user-avatar-mcontent:
   files-mcontent:
