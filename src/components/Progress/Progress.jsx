@@ -21,7 +21,7 @@ function Progress({ progress }) {
   </div>
 }
 
-const limit = URL.parse(import.meta.url).searchParams.get('limit') || 3;
+const limit = (new URL(import.meta.url)).searchParams.get('limit');
 
 fetch(`${serviceHost("mcontent")}/api/mcontent/progress/public/?isPublic=1&limit=${limit}`)
   .then(async response => {

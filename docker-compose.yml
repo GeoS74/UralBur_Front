@@ -39,7 +39,7 @@ services:
       - JWT_SECRET_KEY=secret_key
     volumes:
       - user-avatar-mcontent:/mcontent/files/photo
-      - slider-mcontent:/mcontent/files/images/slider
+      - files-mcontent:/mcontent/files/images
       - init-db-mcontent:/mcontent/libs/db.init
   db_mcontent:
     image: "mongo"
@@ -66,4 +66,4 @@ volumes:
   db-mcontent:
   init-db-mcontent:
   user-avatar-mcontent:
-  slider-mcontent:
+  files-mcontent:

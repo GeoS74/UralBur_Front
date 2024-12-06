@@ -1,4 +1,4 @@
-import { loader, shower } from "../libs/common.js";
+import { loader, shower } from "./common.js";
 
 class Connector {
   components = new Map();
