@@ -11,7 +11,7 @@ function Navigate() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand " href="index.html"><img src="images/logo.svg" alt="ural-bur" width="50px" height="50px" />УралБур</a>
+        <a className="navbar-brand " href="index.html"><img src="images/logo.svg" alt="ural-bur" width="50px" height="50px" />УралБурПроект</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

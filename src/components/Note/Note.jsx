@@ -13,7 +13,7 @@ function Notes({ notes }) {
     <div className="text text-center element-animate">
       <h3 className="mb-4">{e.title}</h3>
       <p className="mb-5">{e.message}</p>
-      <p><a href="#" className="btn btn-primary btn-sm px-3 py-2">Learn More</a></p>
+      {/* <p><a href="#" className="btn btn-primary btn-sm px-3 py-2">Learn More</a></p> */}
     </div>
   </div>)
 }

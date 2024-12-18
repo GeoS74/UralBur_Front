@@ -1,8 +1,9 @@
+import serviceHost from "../libs/service.host.js";
 import connector from "../libs/connector.js";
 
 connector.add("MainCatalog");
 
-function MainCatalog() {
+function MainCatalog({ positions }) {
   React.useEffect(() => connector.del("MainCatalog"));
 
   return <>
@@ -17,55 +18,26 @@ function MainCatalog() {
 
     <div className="container-fluid">
       <div className="row no-gutters">
-        <div className="col-md-4 element-animate">
-          <a href="project-single.html" className="link-thumbnail">
-            <h3>Супер буры</h3>
+
+        {positions.map((e) => <div key={e.id} className="col-md-4 element-animate">
+          <a href="#" className="link-thumbnail">
+            <h3>{e.title}</h3>
             <span className="ion-plus icon"></span>
-            <img src="images/industrial_img_1.jpg" alt="Free template by Free-Template.co" className="img-fluid" />
+            <img src={`${serviceHost("mcontent")}/api/mcontent/static/images/catalog/${e.image.fileName}`} alt="Free template by Free-Template.co" className="img-fluid" />
           </a>
-        </div>
-        <div className="col-md-4 element-animate">
-          <a href="project-single.html" className="link-thumbnail">
-            <h3>Бур 3000</h3>
-            <span className="ion-plus icon"></span>
-            <img src="images/industrial_img_2.jpg" alt="Free template by Free-Template.co" className="img-fluid" />
-          </a>
-        </div>
-        <div className="col-md-4 element-animate">
-          <a href="project-single.html" className="link-thumbnail">
-            <h3>Мега бурилка</h3>
-            <span className="ion-plus icon"></span>
-            <img src="images/industrial_img_3.jpg" alt="Free template by Free-Template.co" className="img-fluid" />
-          </a>
-        </div>
-        <div className="col-md-4 element-animate">
-          <a href="project-single.html" className="link-thumbnail">
-            <h3>Пробивной бур</h3>
-            <span className="ion-plus icon"></span>
-            <img src="images/industrial_img_4.jpg" alt="Free template by Free-Template.co" className="img-fluid" />
-          </a>
-        </div>
-        <div className="col-md-4 element-animate">
-          <a href="project-single.html" className="link-thumbnail">
-            <h3>Бур как бур</h3>
-            <span className="ion-plus icon"></span>
-            <img src="images/industrial_img_5.jpg" alt="Free template by Free-Template.co" className="img-fluid" />
-          </a>
-        </div>
-        <div className="col-md-4 element-animate">
-          <a href="project-single.html" className="link-thumbnail">
-            <h3>Бурильная камера</h3>
-            <span className="ion-plus icon"></span>
-            <img src="images/industrial_img_6.jpg" alt="Free template by Free-Template.co" className="img-fluid" />
-          </a>
-        </div>
+        </div>)}
+
       </div>
     </div>
-
-
-
   </>
 }
 
-const root = ReactDOM.createRoot(document.getElementById("mainCatalog"));
-root.render(<MainCatalog />);
+fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?isPublic=1&limit=6`)
+  .then(async response => {
+    const res = await response.json();
+    return res;
+  })
+  .then(res => {
+    const root = ReactDOM.createRoot(document.getElementById("mainCatalog"));
+    root.render(<MainCatalog positions={res} />);
+  })
