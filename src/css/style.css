@@ -7656,9 +7656,9 @@ header {
       margin-left: 0.5em; }
       .slider-item .slider-text h1 span {
         color: white;
-        background-color: #fd5f00;
-        -webkit-box-shadow: 0.5em 0 0 #fd5f00,-0.5em 0 0 #fd5f00;
-        box-shadow: 0.5em 0 0 #fd5f00,-0.5em 0 0 #fd5f00; }
+        /* background-color: #fd5f00;
+        -webkit-box-shadow: 0.5em 0 0 #fd5f00,-0.5em 0 0 #fd5f00; */
+        /* box-shadow: 0.5em 0 0 #fd5f00,-0.5em 0 0 #fd5f00;  */}
       @media (max-width: 991.98px) {
         .slider-item .slider-text h1 {
           font-size: 40px; } }
