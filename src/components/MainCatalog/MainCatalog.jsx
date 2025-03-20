@@ -23,7 +23,7 @@ function MainCatalog({ positions }) {
           <a href="#" className="link-thumbnail">
             <h3>{e.title}</h3>
             <span className="ion-plus icon"></span>
-            <img src={`${serviceHost("mcontent")}/api/mcontent/static/images/catalog/${e.image.fileName}`} alt="Free template by Free-Template.co" className="img-fluid" />
+            <img src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/position/images/${e.files.image.fileName}`} alt="Free template by Free-Template.co" className="img-fluid" />
           </a>
         </div>)}
 
