@@ -40,4 +40,4 @@ function listObjects(dir) {
   });
 }
 
-listObjects(path.join(__dirname, readFrom));
+listObjects(path.join(__dirname, readFrom, process.argv[2] || ''));
