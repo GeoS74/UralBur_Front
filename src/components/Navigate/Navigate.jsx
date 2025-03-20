@@ -22,10 +22,10 @@ function Navigate() {
               <a className={"nav-link" + _isActive("index.html")} href="index.html">Главная</a>
             </li>
             <li className="nav-item">
-              <a className={"nav-link" + _isActive("about.html")} href="about.html">О компании</a>
+              <a className={"nav-link" + _isActive("products.html")} href="products.html">Продукция</a>
             </li>
             <li className="nav-item">
-              <a className={"nav-link" + _isActive("products.html")} href="index.html">Продукция</a>
+              <a className={"nav-link" + _isActive("about.html")} href="about.html">О компании</a>
             </li>
             <li className="nav-item dropdown">
 

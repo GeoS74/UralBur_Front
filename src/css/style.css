@@ -7479,7 +7479,7 @@ header {
   text-transform: uppercase; }
 
 .blog .media > a {
-  width: 40%; }
+  width: 20%; }
   @media (max-width: 767.98px) {
     .blog .media > a {
       width: 100%;
