@@ -27,10 +27,11 @@ function Navigate() {
             <li className="nav-item">
               <a className={"nav-link" + _isActive("about.html")} href="about.html">О компании</a>
             </li>
-            <li className="nav-item dropdown">
 
+
+            {/* <li className="nav-item dropdown"> */}
               {/* эта ссылка должна быть активной сразу для нескольких страниц */}
-              <a className={"nav-link dropdown-toggle" + _isActive(["foo.html", "bar.html"])}
+              {/* <a className={"nav-link dropdown-toggle" + _isActive(["foo.html", "bar.html"])}
                 href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сервис</a>
 
               <div className="dropdown-menu" aria-labelledby="dropdown04">
@@ -38,7 +39,9 @@ function Navigate() {
                 <a className="dropdown-item" href="index.html">Индивидуальные решения</a>
                 <a className="dropdown-item" href="index.html">Обслуживание</a>
               </div>
-            </li>
+            </li> */}
+
+            
             <li className="nav-item">
               <a className={"nav-link" + _isActive("contact.html")} href="contact.html">Контакты</a>
             </li>

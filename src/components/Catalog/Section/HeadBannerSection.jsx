@@ -11,7 +11,7 @@ function HeadBannerSection({ template }) {
       <div className="row slider-text align-items-center justify-content-center">
         <div className="col-md-8 text-center col-sm-12 element-animate pt-5">
           <h1 className="pt-5"><span>{template.title}</span></h1>
-          {/* <p className="mb-5 w-75">{template.description}</p> */}
+          <p className="mb-5 w-75">{template.description}</p>
         </div>
       </div>
     </div>
@@ -20,11 +20,8 @@ function HeadBannerSection({ template }) {
 
 fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${URL.parse(window.location).searchParams.get('id')}`)
   .then(async response => {
-    if (response.ok) {
-      const res = await response.json();
-      return res;
-    }
-    location.href="products.html"
+    const res = await response.json();
+    return res;
   })
   .then(res => {
     const root = ReactDOM.createRoot(document.getElementById("headBannerSection"));

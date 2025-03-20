@@ -3,6 +3,8 @@ export function loader($) {
     if ($('#loader').length > 0) {
       $('#loader').removeClass('show');
     }
+    // const loader = document.getElementById("loader").classList.remove("show");
+    // document.getElementById("loader").remove();
   }, 1);
 }
 

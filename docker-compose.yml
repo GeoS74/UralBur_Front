@@ -35,6 +35,7 @@ services:
       - DB_HOST=db_mcontent
       - DB_PORT=27017
       - DB_NAME=admin
+      - CREATE_AUTOINDEX=true
       - JWT_CHECK=true
       - JWT_SECRET_KEY=secret_key
     volumes:
