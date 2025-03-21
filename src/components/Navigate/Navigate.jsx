@@ -48,9 +48,9 @@ function Navigate() {
           </ul>
 
           <div className="navbar-nav ml-auto">
-            <form method="post" className="search-form">
+            <form className="search-form" action="search.html">
               <span className="icon ion ion-search"></span>
-              <input type="text" className="form-control" placeholder="Поиск..."></input>
+              <input type="text" className="form-control" placeholder="Поиск..." name="search"></input>
             </form>
           </div>
 

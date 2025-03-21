@@ -1,10 +1,10 @@
 import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
 
-connector.add("Section");
+connector.add("Search");
 
-function Section({ positions }) {
-  React.useEffect(() => connector.del("Section"));
+function Search({ positions }) {
+  React.useEffect(() => connector.del("Search"));
 
   return <div className="container">
 
@@ -19,7 +19,7 @@ function Section({ positions }) {
       <div className="col-md-10">
 
         {positions.map((e) => <div key={e.id} className="media mb-4 d-md-flex d-block element-animate">
-          <a href={`product-single.html?alias=${e.alias}&levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}`} className="mr-5"><img src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/position/images/${e.files.image.fileName}`} alt={e.title} className="img-fluid"/></a>
+          <a href={`product-single.html?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}&alias=${e.alias}`} className="mr-5"><img src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/position/images/${e.files.image.fileName}`} alt={e.title} className="img-fluid"/></a>
           <div className="media-body">
             {/* <span className="post-meta">Feb 26th, 2018</span> */}
             <h3 className="mt-2 text-black"><a href={`product-single.html?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}&alias=${e.alias}`}>{e.title}</a></h3>
@@ -33,12 +33,12 @@ function Section({ positions }) {
   </div>
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}`)
+fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?search=${URL.parse(window.location).searchParams.get('search')}`)
   .then(async response => {
     const res = await response.json();
     return res;
   })
   .then(res => {
-    const root = ReactDOM.createRoot(document.getElementById("sectionPosition"));
-    root.render(<Section positions={res} />);
+    const root = ReactDOM.createRoot(document.getElementById("search"));
+    root.render(<Search positions={res} />);
   })
