@@ -18,7 +18,7 @@ function HeadBannerSection({ template }) {
   </div>
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${URL.parse(window.location).searchParams.get('id')}`)
+fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${URL.parse(window.location).searchParams.get('levelAlias')}`)
   .then(async response => {
     const res = await response.json();
     return res;

@@ -20,7 +20,7 @@ function Catalog({ levels }) {
       <div className="row no-gutters">
 
         {levels.map((e) => <div key={e.id} className="col-md-4 element-animate">
-          <a href={`section.html?id=${e.id}`} className="link-thumbnail">
+          <a href={`section.html?levelAlias=${e.alias}`} className="link-thumbnail">
             <h3>{e.title}</h3>
             <span className="ion-plus icon"></span>
             <img src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/level/images/${e.image.fileName}`} alt={e.title} className="img-fluid" />

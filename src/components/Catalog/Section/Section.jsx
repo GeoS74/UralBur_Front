@@ -6,8 +6,6 @@ connector.add("Section");
 function Section({ positions }) {
   React.useEffect(() => connector.del("Section"));
 
-  console.log(positions);
-
   return <div className="container">
 
     {/* <div className="row justify-content-center mb-5 element-animate">
@@ -21,12 +19,12 @@ function Section({ positions }) {
       <div className="col-md-10">
 
         {positions.map((e) => <div key={e.id} className="media mb-4 d-md-flex d-block element-animate">
-          <a href={`product-single.html?id=${e.id}`} className="mr-5"><img src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/position/images/${e.files.image.fileName}`} alt={e.title} className="img-fluid"/></a>
+          <a href={`product-single.html?alias=${e.alias}&levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}`} className="mr-5"><img src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/position/images/${e.files.image.fileName}`} alt={e.title} className="img-fluid"/></a>
           <div className="media-body">
             {/* <span className="post-meta">Feb 26th, 2018</span> */}
-            <h3 className="mt-2 text-black"><a href={`product-single.html?id=${e.id}`}>{e.title}</a></h3>
+            <h3 className="mt-2 text-black"><a href={`product-single.html?alias=${e.alias}&levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}`}>{e.title}</a></h3>
             <p>{e.description}</p>
-            <p><a href={`product-single.html?id=${e.id}`} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
+            <p><a href={`product-single.html?alias=${e.alias}&levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}`} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
           </div>
         </div>)}
       </div>
@@ -35,7 +33,7 @@ function Section({ positions }) {
   </div>
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?level=${URL.parse(window.location).searchParams.get('id')}`)
+fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}`)
   .then(async response => {
     const res = await response.json();
     return res;
