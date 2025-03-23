@@ -1,6 +1,8 @@
 import serviceHost from "../libs/service.host.js";
 import connector from "../libs/connector.js";
 
+import LevelImage from "./Image/LevelImage.js";
+
 connector.add("Catalog");
 
 function Catalog({ levels }) {
@@ -23,7 +25,7 @@ function Catalog({ levels }) {
           <a href={`section.html?levelAlias=${e.alias}`} className="link-thumbnail">
             <h3>{e.title}</h3>
             <span className="ion-plus icon"></span>
-            <img src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/level/images/${e.image.fileName}`} alt={e.title} className="img-fluid" />
+            <LevelImage fileName={e.image.fileName} title={e.title}/>
           </a>
         </div>)}
 

@@ -1,6 +1,8 @@
 import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
 
+import PositionImage from "../Image/PositionImage.js";
+
 import ViewPDF from "./ViewPDF.js";
 
 connector.add("Position");
@@ -18,7 +20,7 @@ function Position({ position }) {
 
     <div className="row">
       <div className="col-12 row justify-content-center" style={{ marginTop: 0 }}>
-        <p><img src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/position/images/${position.files.image.fileName}`} alt={position.title} className="img-fluid" /></p>
+        <p><PositionImage fileName={position.files.image.fileName} title={position.title} /></p>
       </div>
     </div>
     {/* <div className="row justify-content-center">

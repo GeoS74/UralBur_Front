@@ -45,6 +45,11 @@ export default function ViewPDF({ fileName }) {
 
 
 
-  return <div className="row justify-content-center element-animate" id="viewer"></div>
+  return <div className="row justify-content-center element-animate" id="viewer"
+    onClick={() => window.open(
+      `${serviceHost("mcontent")}/api/mcontent/static/catalog/position/pdf/${fileName}`,
+      '_blank'
+    )}
+  ></div>
 }
 
