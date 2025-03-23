@@ -14,7 +14,7 @@ function Position({ position }) {
 
     <div className="row justify-content-center" style={{ marginTop: -50 }}>
       <div className="col-md-8 mb-5">
-        <h2>&ldquo; {position.title} &rdquo;</h2>
+        <h2>&ldquo;{position.title}&rdquo;</h2>
       </div>
     </div>
 
