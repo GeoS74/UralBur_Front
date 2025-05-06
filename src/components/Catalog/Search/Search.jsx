@@ -22,18 +22,25 @@ function Search({ positions }) {
       <div className="col-md-10">
 
         {positions.map((e) => <div key={e.id} className="media mb-4 d-md-flex d-block element-animate">
-          <a href={`product-single.html?levelAlias=${e.level.alias}&alias=${e.alias}`} className="mr-5"><PositionImage fileName={e.files.image.fileName} title={e.title} /></a>
+          <a href={getUrl(e.level.alias, e.alias)} className="mr-5"><PositionImage fileName={e.files.image.fileName} title={e.title} /></a>
           <div className="media-body">
             {/* <span className="post-meta">Feb 26th, 2018</span> */}
-            <h3 className="mt-2 text-black"><a href={`product-single.html?levelAlias=${e.level.alias}&alias=${e.alias}`}>{e.title}</a></h3>
+            <h3 className="mt-2 text-black"><a href={getUrl(e.level.alias, e.alias)}>{e.title}</a></h3>
             <p>{e.description}</p>
-            <p><a href={`product-single.html?levelAlias=${e.level.alias}&alias=${e.alias}`} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
+            <p><a href={getUrl(e.level.alias, e.alias)} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
           </div>
         </div>)}
       </div>
 
     </div>
   </div>
+}
+
+function getUrl(levelAlias, alias){
+  if(config.node == 'dev') {
+    return `product-single.html?levelAlias=${e.level.alias}&alias=${e.alias}`;
+  }
+  return `product-single/${levelAlias}/${alias}.html`
 }
 
 fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?search=${URL.parse(window.location).searchParams.get('search')}`)
