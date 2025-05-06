@@ -3,7 +3,9 @@ import serviceHost from "../../libs/service.host.js";
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/pdf/pdf.worker.js'
 // '../../node_modules/pdfjs-dist/build/pdf.worker.mjs';
 
-export default function ViewPDF({ fileName }) {
+export default function ViewPDF({ fileName, title }) {
+  React.useEffect(() => _modalPDF(jQuery));
+
   const loadingTask = pdfjsLib.getDocument(`${serviceHost("mcontent")}/api/mcontent/static/catalog/position/pdf/${fileName}`);
 
   loadingTask.promise.then(pdf => {
@@ -49,13 +51,18 @@ export default function ViewPDF({ fileName }) {
       }
     });
 
-
-
-  return <div className="row justify-content-center element-animate" id="viewer"
-    onClick={() => window.open(
-      `${serviceHost("mcontent")}/api/mcontent/static/catalog/position/pdf/${fileName}`,
-      '_blank'
-    )}
+  return <div className="row justify-content-center element-animate fancybox" id="viewer"
+  style={{cursor: "pointer"}}
+  data-fancybox
+  data-src={`${serviceHost("mcontent")}/api/mcontent/static/catalog/position/pdf/${fileName}`}
+  data-caption={title}
+    // onClick={() => window.open(
+    //   `${serviceHost("mcontent")}/api/mcontent/static/catalog/position/pdf/${fileName}`,
+    //   '_blank'
+    // )}
   ></div>
 }
 
+function _modalPDF($){
+  $(".fancybox").fancybox({});
+}

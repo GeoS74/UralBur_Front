@@ -1,5 +1,6 @@
 import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
+// import {modalPDF} from "../../libs/common.js";
 
 import PositionImage from "../Image/PositionImage.js";
 
@@ -39,7 +40,7 @@ function Position({ position }) {
       </div>
     </div>
 
-    <ViewPDF fileName={position.files.pdf.fileName} />
+    <ViewPDF fileName={position.files.pdf.fileName} title={position.title}/>
 
   </div>
 }
