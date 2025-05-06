@@ -21,7 +21,7 @@ function listObjects(dir) {
           const parse = path.parse(fname);
 
           if (parse.ext == '.jsx') {
-            childProcess.execSync(`npx babel --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
+            childProcess.execSync(`npx babel --presets minify --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
           }
           else {
 
