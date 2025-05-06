@@ -1,6 +1,6 @@
 import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
-// import {modalPDF} from "../../libs/common.js";
+import config from "../../config.js";
 
 import PositionImage from "../Image/PositionImage.js";
 
@@ -45,7 +45,15 @@ function Position({ position }) {
   </div>
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?alias=${URL.parse(window.location).searchParams.get('alias')}`)
+function getAlias(){
+  if(config.node == 'dev') {
+    return URL.parse(window.location).searchParams.get('alias');
+  }
+  let f = URL.parse(window.location).pathname.split('/');
+  return f[f.length-1].slice(0, -5);
+}
+
+fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?alias=${getAlias()}`)
   .then(async response => {
     const res = await response.json();
     return res;

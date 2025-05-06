@@ -1,5 +1,6 @@
 import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
+import config from "../../config.js";
 
 connector.add("HeadBannerSection");
 
@@ -18,7 +19,15 @@ function HeadBannerSection({ template }) {
   </div>
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${URL.parse(window.location).searchParams.get('levelAlias')}`)
+function getLevelAlias(){
+  if(config.node == 'dev') {
+    return URL.parse(window.location).searchParams.get('levelAlias');
+  }
+  let f = URL.parse(window.location).pathname.split('/');
+  return f[f.length-1].slice(0, -5);
+}
+
+fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`)
   .then(async response => {
     const res = await response.json();
     return res;

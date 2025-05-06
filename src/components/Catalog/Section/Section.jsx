@@ -1,5 +1,6 @@
 import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
+import config from "../../config.js";
 
 import PositionImage from "../Image/PositionImage.js";
 
@@ -21,12 +22,12 @@ function Section({ positions }) {
       <div className="col-md-10">
 
         {positions.map((e) => <div key={e.id} className="media mb-4 d-md-flex d-block element-animate">
-          <a href={`product-single.html?alias=${e.alias}&levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}`} className="mr-5"><PositionImage fileName={e.files.image.fileName} title={e.title}/></a>
+          <a href={getUrl(e.level.alias, e.alias)} className="mr-5"><PositionImage fileName={e.files.image.fileName} title={e.title}/></a>
           <div className="media-body">
             {/* <span className="post-meta">Feb 26th, 2018</span> */}
-            <h3 className="mt-2 text-black"><a href={`product-single.html?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}&alias=${e.alias}`}>{e.title}</a></h3>
+            <h3 className="mt-2 text-black"><a href={getUrl(e.level.alias, e.alias)}>{e.title}</a></h3>
             <p>{e.description}</p>
-            <p><a href={`product-single.html?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}&alias=${e.alias}`} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
+            <p><a href={getUrl(e.level.alias, e.alias)} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
           </div>
         </div>)}
       </div>
@@ -35,7 +36,22 @@ function Section({ positions }) {
   </div>
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}`)
+function getUrl(levelAlias, alias){
+  if(config.node == 'dev') {
+    return `product-single.html?levelAlias=${levelAlias}&alias=${alias}`
+  }
+  return `product-single/${levelAlias}/${alias}.html`
+}
+
+function getLevelAlias(){
+  if(config.node == 'dev') {
+    return URL.parse(window.location).searchParams.get('levelAlias');
+  }
+  let f = URL.parse(window.location).pathname.split('/');
+  return f[f.length-1].slice(0, -5);
+}
+
+fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${getLevelAlias()}`)
   .then(async response => {
     const res = await response.json();
     return res;

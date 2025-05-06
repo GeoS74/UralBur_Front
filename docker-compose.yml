@@ -26,7 +26,7 @@ services:
       - POSTGRES_USER=mauth
       - POSTGRES_DB=mauth
   mcontent_app:
-    image: "geos74/mcontent:0.0.1"
+    image: "geos74/mcontent:0.0.3"
     environment:
       - NODE_ENV=prod
       - SERVER_PORT=3020

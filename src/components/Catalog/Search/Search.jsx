@@ -1,5 +1,6 @@
 import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
+import config from "../../config.js";
 
 import PositionImage from "../Image/PositionImage.js";
 

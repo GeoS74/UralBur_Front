@@ -1,11 +1,21 @@
 import serviceHost from "../libs/service.host.js";
 import connector from "../libs/connector.js";
+import config from "../config.js";
 
 connector.add("Header");
 
-const alias = window.location.pathname.split("/").pop().slice(0, -5) || 'index';
+function getTemplateAlias(){
+  if(config.node == 'dev') {
+    return window.location.pathname.split("/").pop().slice(0, -5) || 'index';
+  }
+  let f = URL.parse(window.location).pathname.split('/');
+  if(f[1].indexOf('.html') !== -1) {
+    return f[1].slice(0, -5);
+  }
+  return f[1] || 'index';
+}
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/${alias}`)
+fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/${getTemplateAlias()}`)
   .then(async response => {
     if (response.ok) {
       const res = await response.json();

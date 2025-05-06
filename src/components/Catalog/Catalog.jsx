@@ -1,5 +1,6 @@
 import serviceHost from "../libs/service.host.js";
 import connector from "../libs/connector.js";
+import config from "../config.js";
 
 import LevelImage from "./Image/LevelImage.js";
 
@@ -22,7 +23,7 @@ function Catalog({ levels }) {
       <div className="row no-gutters">
 
         {levels.map((e) => <div key={e.id} className="col-md-4 element-animate">
-          <a href={`section.html?levelAlias=${e.alias}`} className="link-thumbnail">
+          <a href={getUrl(e.alias)} className="link-thumbnail">
             <h3>{e.title}</h3>
             <span className="ion-plus icon"></span>
             <LevelImage fileName={e.image.fileName} title={e.title}/>
@@ -32,6 +33,13 @@ function Catalog({ levels }) {
       </div>
     </div>
   </>
+}
+
+function getUrl(levelAlias){
+  if(config.node == 'dev') {
+    return `section.html?levelAlias=${levelAlias}`
+  }
+  return `section/${levelAlias}.html`
 }
 
 fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public`)
