@@ -54,6 +54,14 @@ function getLevelAlias(){
 fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${getLevelAlias()}`)
   .then(async response => {
     const res = await response.json();
+
+    // в случае если создан раздел, но в нём нет позиций, сервер вернёт код 200 и пустой массив
+    // эта ситуация обрабатывается как ошибка 404
+    if(!res.length) {
+      window.location.href = '404.html';
+      return;
+    }
+
     return res;
   })
   .then(res => {

@@ -29,6 +29,10 @@ function getLevelAlias(){
 
 fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`)
   .then(async response => {
+    if(response.status == 404) {
+      window.location.href = '404.html';
+      return;
+    }
     const res = await response.json();
     return res;
   })
