@@ -18,7 +18,7 @@ export default function ViewPDF({ fileName }) {
     .then(pages => {
 
       for (let page of pages) {
-        const scale = 0.5;
+        const scale = 1; // this value changed size pdf
         const viewport = page.getViewport({ scale });
         const outputScale = window.devicePixelRatio || 1;
         const canvas = document.createElement("canvas");
@@ -27,8 +27,14 @@ export default function ViewPDF({ fileName }) {
 
         canvas.width = Math.floor(viewport.width * outputScale);
         canvas.height = Math.floor(viewport.height * outputScale);
-        canvas.style.width = Math.floor(viewport.width) + "px";
-        canvas.style.height = Math.floor(viewport.height) + "px";
+
+        // canvas.style.width = Math.floor(viewport.width) + "px";
+        // canvas.style.height = Math.floor(viewport.height) + "px";
+        // use this for change size pdf
+        canvas.style.width = "80%";
+        // canvas.style.height = "80%";
+        canvas.style.maxWidth = Math.floor(viewport.width) + "px";
+        canvas.style.maxHeight = Math.floor(viewport.height) + "px";
 
         const transform = outputScale !== 1
           ? [outputScale, 0, 0, outputScale, 0, 0]

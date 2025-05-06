@@ -21,12 +21,12 @@ function Search({ positions }) {
       <div className="col-md-10">
 
         {positions.map((e) => <div key={e.id} className="media mb-4 d-md-flex d-block element-animate">
-          <a href={`product-single.html?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}&alias=${e.alias}`} className="mr-5"><PositionImage fileName={e.files.image.fileName} title={e.title} /></a>
+          <a href={`product-single.html?levelAlias=${e.level.alias}&alias=${e.alias}`} className="mr-5"><PositionImage fileName={e.files.image.fileName} title={e.title} /></a>
           <div className="media-body">
             {/* <span className="post-meta">Feb 26th, 2018</span> */}
-            <h3 className="mt-2 text-black"><a href={`product-single.html?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}&alias=${e.alias}`}>{e.title}</a></h3>
+            <h3 className="mt-2 text-black"><a href={`product-single.html?levelAlias=${e.level.alias}&alias=${e.alias}`}>{e.title}</a></h3>
             <p>{e.description}</p>
-            <p><a href={`product-single.html?levelAlias=${URL.parse(window.location).searchParams.get('levelAlias')}&alias=${e.alias}`} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
+            <p><a href={`product-single.html?levelAlias=${e.level.alias}&alias=${e.alias}`} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
           </div>
         </div>)}
       </div>
