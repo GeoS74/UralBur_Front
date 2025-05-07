@@ -26,31 +26,27 @@ function listObjects(dir) {
           const fname = pathToFile.replace('src', 'build');
           const parse = path.parse(fname);
 
+          try {
+            fs.readdirSync(parse.dir);
+          }
+          catch (e) {
+            fs.mkdirSync(parse.dir, { recursive: true });
+          }
+
           if (parse.ext == '.jsx') {
             childProcess.execSync(`npx babel --presets minify --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
           }
-          else if(parse.ext == '.html'){
+          else if(parse.ext == '.html' || parse.ext == '.css'){
             const html = fs.readFileSync(pathToFile, 'utf-8');
             const m = htmlMinifier.minify(html, minifyOptions);
-            fs.writeFileSync(path.join(parse.dir, parse.name + '.html'), m);
-          }
-          else if(parse.ext == '.css'){
-            const html = fs.readFileSync(pathToFile, 'utf-8');
-            const m = htmlMinifier.minify(html, minifyOptions);
-            fs.writeFileSync(path.join(parse.dir, parse.name + '.css'), m);
+            fs.writeFileSync(path.join(parse.dir, parse.base), m, {flag: 'w'});
           }
           else {
-
-            try {
-              fs.readdirSync(parse.dir);
-            }
-            catch (e) {
-              fs.mkdirSync(parse.dir, { recursive: true });
-            }
-
             fs.copyFileSync(pathToFile, fname);
           }
         }
+
+
       });
     }
   });
