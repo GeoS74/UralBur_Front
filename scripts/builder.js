@@ -1,7 +1,13 @@
 const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const htmlMinifier = require('html-minifier');
 const readFrom = '../src';
+
+const minifyOptions = {
+  collapseWhitespace: true, // пробелы
+  removeComments: true // комментарии
+};
 
 function listObjects(dir) {
   fs.readdir(dir, (err, files) => {
@@ -21,8 +27,18 @@ function listObjects(dir) {
           const parse = path.parse(fname);
 
           if (parse.ext == '.jsx') {
-            childProcess.execSync(`npx babel --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
+            childProcess.execSync(`npx babel --presets minify --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
           }
+          // else if(parse.ext == '.html'){
+          //   const html = fs.readFileSync(pathToFile, 'utf-8');
+          //   const m = htmlMinifier.minify(html, minifyOptions);
+          //   fs.writeFileSync(path.join(parse.dir, parse.name + '.html'), m);
+          // }
+          // else if(parse.ext == '.css'){
+          //   const html = fs.readFileSync(pathToFile, 'utf-8');
+          //   const m = htmlMinifier.minify(html, minifyOptions);
+          //   fs.writeFileSync(path.join(parse.dir, parse.name + '.css'), m);
+          // }
           else {
 
             try {
@@ -40,4 +56,4 @@ function listObjects(dir) {
   });
 }
 
-listObjects(path.join(__dirname, readFrom));
+listObjects(path.join(__dirname, readFrom, process.argv[2] || ''));
