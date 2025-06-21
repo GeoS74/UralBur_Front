@@ -18,7 +18,7 @@ function _searchId(alias, levelsAll, listHref) {
             return newList
         } else {
             if (levelsAll[i]['childs'].length !== 0) {
-                newList.push([levelsAll[i]['title'], `http://127.0.0.1:5500/build/section.html?levelAlias=${levelsAll[i]['alias']}`])
+                newList.push([levelsAll[i]['title'], `section.html?levelAlias=${levelsAll[i]['alias']}`])
                 let result = _searchId(alias, levelsAll[i]['childs'], newList)
                 if (result) {
                     return result

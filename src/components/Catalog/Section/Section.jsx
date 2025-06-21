@@ -82,7 +82,7 @@ const positionsFetch = fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/po
 Promise.all([levelsFetch, levelsFetchAll, positionsFetch])
   .then(responses => Promise.all(responses.map(async res => await res.json())))
   .then(([levelsFetchAll, levelsFetch, positionsFetch]) => {
-    if(!positionsFetch.length) {
+    if(!positionsFetch.length && !levelsFetch.length) {
       window.location.href = '404.html';
       return;
     }
