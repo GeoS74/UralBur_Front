@@ -26,7 +26,7 @@ services:
       - POSTGRES_USER=mauth
       - POSTGRES_DB=mauth
   mcontent_app:
-    image: "geos74/mcontent:0.0.3"
+    image: "geos74/mcontent:0.0.4"
     environment:
       - NODE_ENV=prod
       - SERVER_PORT=3020
@@ -55,6 +55,7 @@ services:
     volumes:
       - ./nginx/admin.conf:/etc/nginx/conf.d/default.conf
   main:
+#    image: "geos74/uralbur-front:0.0.3"
     image: "aboltys754/uralbur-front:0.0.2"
     ports:
       - "80:80"
@@ -72,9 +73,31 @@ services:
       - ./certbot/conf:/etc/letsencrypt/:rw
       - ./certbot/www:/var/www/certbot/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  sitemap_maker:
+    image: "geos74/sitemap-maker:0.0.2"
+    environment:
+      - SERVER_PORT=3150
+      - BASE_URL=https://ubp2a2.ru
+      - API_PAGES=https://ubp2a2.ru/api/mcontent/catalog/position/public
+      - API_PREFIX=/product-single
+      - API_POSTFIX=.html
+      - API_PAGES_LIMIT=50
+      - API_PAGES_FETCH_LIMIT=3
+      - MAX_URLS_FOR_SITEMAP=20000
+      - PAUSE_MS=30000000
+      - START_MSTIME=1000
+    volumes:
+      - ./sitemap/static.url:/sitemap-maker/static.url
+      - sitemap:/sitemap-maker/sitemap
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+#    restart: on-failure
 volumes:
   init-db-mauth:
   db-mauth:
   db-mcontent:
   init-db-mcontent:
   files-mcontent:
+  sitemap:
