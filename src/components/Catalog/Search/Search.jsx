@@ -1,3 +1,4 @@
+import Converter from "../../libs/converter.js";
 import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
 import config from "../../config.js";
@@ -5,6 +6,8 @@ import config from "../../config.js";
 import PositionImage from "../Image/PositionImage.js";
 
 connector.add("Search");
+
+const converter = new Converter();
 
 function Search({ positions }) {
   React.useEffect(() => connector.del("Search"));
@@ -26,7 +29,9 @@ function Search({ positions }) {
           <div className="media-body">
             {/* <span className="post-meta">Feb 26th, 2018</span> */}
             <h3 className="mt-2 text-black"><a href={getUrl(e.level.alias, e.alias)}>{e.title}</a></h3>
-            <p>{e.description}</p>
+            {e.description ? <div className="col-md-8"
+              dangerouslySetInnerHTML={{ __html: converter.markdownToHTML(_cut(e.description, 250)) }}
+            ></div> : <></>}
             <p><a href={getUrl(e.level.alias, e.alias)} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
           </div>
         </div>)}
@@ -34,6 +39,10 @@ function Search({ positions }) {
 
     </div>
   </div>
+}
+
+function _cut(text, limit) {
+  return (limit && text.length > limit) ? text.substring(0, text.indexOf(".", limit) + 1) : text;
 }
 
 function getUrl(levelAlias, alias){
