@@ -6,7 +6,9 @@ export default function Form() {
       <div className="col-md-8 mx-auto contact-form-contact-info">
         <p className="d-flex">
           <span className="ion-chatbubble-working icon mr-5"></span>
-          <span>Спасибо за обращение, Ваше cообщение отправлено и будет обработано в длижайшее время.</span>
+          <span>Благодарим Вас за проявленный интерес к нашей продукции, 
+            но в настоящее время форма обратной связи не работает. 
+            Вы можете написать нам письмо со своего рабочего email или позвонить по телефону, указанному на этой странице.</span>
         </p>
       </div>
     </div>
