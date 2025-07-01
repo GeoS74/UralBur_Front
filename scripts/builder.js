@@ -29,6 +29,10 @@ function listObjects(dir) {
           if (parse.ext == '.jsx') {
             childProcess.execSync(`npx babel --presets minify --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
           }
+          else if(parse.ext == '.js'){
+            console.log(`${pathToFile} -> ${path.join(parse.dir, parse.name + '.js')}`);
+            childProcess.execSync(`npx babel ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')} --presets=@babel/preset-env,minify`);
+          }
           else if(parse.ext == '.html'){
             const html = fs.readFileSync(pathToFile, 'utf-8');
             const m = htmlMinifier.minify(html, minifyOptions);
