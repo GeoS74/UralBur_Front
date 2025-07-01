@@ -12,14 +12,27 @@ const converter = new Converter();
 function Search({ positions }) {
   React.useEffect(() => connector.del("Search"));
 
+  console.log(positions)
+
+  if (!positions.length) {
+    return <div className="container">
+      <div className="row justify-content-center mb-5 element-animate">
+        <div className="col-md-8 text-center">
+          <h2 className=" heading mb-4">Поиск не дал результатов</h2>
+          <p className="mb-5 lead">Попробуйте уточнить запрос, введите артикул или наименование продукции.</p>
+        </div>
+      </div>
+    </div>
+  }
+
   return <div className="container">
 
-    {/* <div className="row justify-content-center mb-5 element-animate">
-    <div className="col-md-8 text-center">
-      <h2 className=" heading mb-4">Blog Posts</h2>
-      <p className="mb-5 lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+    <div className="row justify-content-center mb-5 element-animate">
+      <div className="col-md-8 text-center">
+        <h2 className=" heading mb-4">Найдены следующие позиции</h2>
+        {/* <p className="mb-5 lead"></p> */}
+      </div>
     </div>
-  </div> */}
 
     <div className="row">
       <div className="col-md-10">
@@ -35,6 +48,7 @@ function Search({ positions }) {
             <p><a href={getUrl(e.level.alias, e.alias)} className="readmore">Подробнее <span className="ion-android-arrow-dropright-circle"></span></a></p>
           </div>
         </div>)}
+
       </div>
 
     </div>
@@ -45,9 +59,9 @@ function _cut(text, limit) {
   return (limit && text.length > limit) ? text.substring(0, text.indexOf(".", limit) + 1) : text;
 }
 
-function getUrl(levelAlias, alias){
-  if(config.node == 'dev') {
-    return `product-single.html?levelAlias=${e.level.alias}&alias=${e.alias}`;
+function getUrl(levelAlias, alias) {
+  if (config.node == 'dev') {
+    return `product-single.html?levelAlias=${levelAlias}&alias=${alias}`;
   }
   return `product-single/${levelAlias}/${alias}.html`
 }

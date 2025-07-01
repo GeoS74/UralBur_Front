@@ -13,8 +13,8 @@ function Catalog({ levels }) {
     <div className="container">
       <div className="row justify-content-center mb-5 element-animate">
         <div className="col-md-8 text-center">
-          <h2 className=" heading mb-4">Каталог</h2>
-          <p className="mb-5 lead">Мы поставляем качественную и востребованную всеми компаниями продукцию</p>
+          <h2 className=" heading mb-4">Продукция</h2>
+          <p className="mb-5 lead">Мы поставляем качественную и востребованную продукцию.<br/>Достигайте большего с профессиональным оборудованием!</p>
         </div>
       </div>
     </div>

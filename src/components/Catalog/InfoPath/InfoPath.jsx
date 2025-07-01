@@ -2,11 +2,11 @@
 
 
 export default function InfoPath({alias, levelsAll}) {
-    let infoPath = _searchId(alias, levelsAll, [['Каталог', 'products.html']])
+    let infoPath = _searchId(alias, levelsAll, [['Каталог продукции', 'products.html']])
     return (
         <div className="col-lg text-lg-center  mb-5" >
             {infoPath.map((value, index) => 
-                <a key={index} className="btn btn-outline-primary px-4 py-3 m-1" href={value[1]}>{value[0]}</a>                    
+                <a key={index} className="btn btn-outline-primary px-4 py-3 m-1 element-animate" href={value[1]}>{value[0]}</a>                    
                 )}
         </div>
     )

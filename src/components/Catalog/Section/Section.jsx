@@ -12,7 +12,9 @@ connector.add("Section");
 const converter = new Converter();
 
 function Section({ levels, levelsAll, positions, alias }) {
+
   React.useEffect(() => connector.del("Section"));
+
   return <div className="container">
 
     <InfoPath alias={alias} levelsAll={levelsAll} />
