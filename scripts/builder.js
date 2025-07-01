@@ -29,16 +29,16 @@ function listObjects(dir) {
           if (parse.ext == '.jsx') {
             childProcess.execSync(`npx babel --presets minify --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
           }
-          // else if(parse.ext == '.html'){
-          //   const html = fs.readFileSync(pathToFile, 'utf-8');
-          //   const m = htmlMinifier.minify(html, minifyOptions);
-          //   fs.writeFileSync(path.join(parse.dir, parse.name + '.html'), m);
-          // }
-          // else if(parse.ext == '.css'){
-          //   const html = fs.readFileSync(pathToFile, 'utf-8');
-          //   const m = htmlMinifier.minify(html, minifyOptions);
-          //   fs.writeFileSync(path.join(parse.dir, parse.name + '.css'), m);
-          // }
+          else if(parse.ext == '.html'){
+            const html = fs.readFileSync(pathToFile, 'utf-8');
+            const m = htmlMinifier.minify(html, minifyOptions);
+            fs.writeFileSync(path.join(parse.dir, parse.name + '.html'), m);
+          }
+          else if(parse.ext == '.css'){
+            const html = fs.readFileSync(pathToFile, 'utf-8');
+            const m = htmlMinifier.minify(html, minifyOptions);
+            fs.writeFileSync(path.join(parse.dir, parse.name + '.css'), m);
+          }
           else {
 
             try {

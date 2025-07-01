@@ -1,6 +1,7 @@
 import Converter from "../libs/converter.js";
 import serviceHost from "../libs/service.host.js";
 import connector from "../libs/connector.js";
+import config from "../config.js";
 
 connector.add("Notes");
 
@@ -14,15 +15,24 @@ function Notes({ notes }) {
       data-animate-effect="fadeIn"
       style={{ "backgroundImage": `url('${serviceHost("mcontent")}/api/mcontent/static/images/note/${e.image.fileName}')` }}></div>
     <div className="text text-center element-animate">
+
       <h3 className="mb-4">{e.title}</h3>
 
       {e.message ? <p className="mb-5"
         dangerouslySetInnerHTML={{ __html: converter.markdownToHTML(_cut(e.message, 250)) }}
       ></p> : <></>}
       {/* <p className="mb-5">{e.message}</p> */}
-      {/* <p><a href="#" className="btn btn-primary btn-sm px-3 py-2">Learn More</a></p> */}
+
+      <p><a href={getUrl(e.alias)} className="btn btn-primary btn-sm px-3 py-2">Узнать больше</a></p>
     </div>
   </div>)
+}
+
+function getUrl(alias){
+  if(config.node == 'dev') {
+    return `simple-article.html?alias=${alias}`
+  }
+  return `simple-article/${alias}.html`
 }
 
 function _cut(text, limit) {
