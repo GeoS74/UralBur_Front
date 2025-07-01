@@ -29,7 +29,9 @@ function listObjects(dir) {
           if (parse.ext === '.jsx') {
             childProcess.execSync(`npx babel --presets minify --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
           }
-          else if(parse.ext === '.js' && parse.name.indexOf('.min') === -1){
+          // BUG DETECTED
+          // файл pdf.worker.js не правильно минифицируется
+          else if(parse.ext === '.js' && parse.name.indexOf('.min') === -1 && parse.name.indexOf('pdf.worker') === -1){
             childProcess.execSync(`npx babel ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')} --presets=@babel/preset-env,minify`);
           }
           else if(parse.ext === '.html'){
