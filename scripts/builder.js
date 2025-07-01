@@ -26,18 +26,18 @@ function listObjects(dir) {
           const fname = pathToFile.replace('src', 'build');
           const parse = path.parse(fname);
 
-          if (parse.ext == '.jsx') {
+          if (parse.ext === '.jsx') {
             childProcess.execSync(`npx babel --presets minify --presets @babel/preset-react ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')}`);
           }
-          else if(parse.ext == '.js'){
+          else if(parse.ext === '.js' && parse.name.indexOf('.min') === -1){
             childProcess.execSync(`npx babel ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')} --presets=@babel/preset-env,minify`);
           }
-          else if(parse.ext == '.html'){
+          else if(parse.ext === '.html'){
             const html = fs.readFileSync(pathToFile, 'utf-8');
             const m = htmlMinifier.minify(html, minifyOptions);
             fs.writeFileSync(path.join(parse.dir, parse.name + '.html'), m);
           }
-          else if(parse.ext == '.css'){
+          else if(parse.ext === '.css' && parse.name.indexOf('.min') === -1){
             const html = fs.readFileSync(pathToFile, 'utf-8');
             const m = htmlMinifier.minify(html, minifyOptions);
             fs.writeFileSync(path.join(parse.dir, parse.name + '.css'), m);

@@ -2,6 +2,10 @@ export function loader($) {
   setTimeout(() => {
     if ($('#loader').length > 0) {
       $('#loader').removeClass('show');
+
+			// этот div появляется после отрисовки всех компонент
+			// Puppeteer ждёт его появления, чтобы отдать наполненную страницу
+			$('<div>', { id: 'loadingComplete' }).insertAfter('#loader');
     }
     // const loader = document.getElementById("loader").classList.remove("show");
     // document.getElementById("loader").remove();
