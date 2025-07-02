@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
   <base href="/">
@@ -26,20 +26,16 @@
 </head>
 
 <body>
-
   <!-- глобальное меню -->
   <header role="banner" id="navigate"></header>
 
   <div class="top-shadow"></div>
 
-  <!-- заглавный баннер -->
-  <div class="inner-page" id="headBanner"></div>
+  <!-- заглавный баннер статьи -->
+  <div class="inner-page" id="headBannerNote"></div>
 
-  <!-- каталог -->
-  <section class="section border-t pb-0" id="catalog"></section>
-
-  <!-- блок достижений -->
-  <section class="section bg-light" id="progress"></section>
+  <!-- статья о компании -->
+  <section class="section" id="noteContent"></section>
 
   <!-- скачивание прайса -->
   <section class="section bg-primary" id="downloadPrice"></section>
@@ -63,13 +59,14 @@
 
   <!-- <script src="js/main.js"></script> -->
   <script src="components/libs/connector.js" type="module"></script>
-  <script src="components/Header/Header.js" type="module"></script>
+  <!-- this is dynamic content
+   <script src="components/Header/Header.js" type="module"></script> -->
   <script src="components/Navigate/Navigate.js" type="module"></script>
-  <script src="components/HeadBanner/HeadBanner.js" type="module"></script>
-  <script src="components/Catalog/Catalog.js" type="module"></script>
-  <script src="components/Progress/Progress.js?limit=3" type="module"></script>
+  <script src="components/Notes/HeadBannerNote.js" type="module"></script>
+  <script src="components/Notes/NoteContent.js" type="module"></script>
   <script src="components/DownloadPrice/DownloadPrice.js" type="module"></script>
   <script src="components/Footer/Footer.js" type="module"></script>
+
 </body>
 
 </html>

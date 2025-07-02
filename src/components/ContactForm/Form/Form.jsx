@@ -1,6 +1,21 @@
 export default function Form() {
+  const [disabled, setDisabled] = React.useState(false);
+
+  if(disabled) {
+    return <div className="col-md-6 mb-5 order-2">
+      <div className="col-md-8 mx-auto contact-form-contact-info">
+        <p className="d-flex">
+          <span className="ion-chatbubble-working icon mr-5"></span>
+          <span>Благодарим Вас за проявленный интерес к нашей продукции, 
+            но в настоящее время форма обратной связи не работает. 
+            Вы можете написать нам письмо со своего рабочего email или позвонить по телефону, указанному на этой странице.</span>
+        </p>
+      </div>
+    </div>
+  }
+ 
   return <div className="col-md-6 mb-5 order-2">
-  <form action="#" method="post" onSubmit={e => _onSubmit(e)}>
+  <form action="#" method="post" onSubmit={e => _onSubmit(e, setDisabled)}>
     <div className="row">
       <div className="col-md-6 form-group">
         <label htmlFor="name">Имя</label>
@@ -37,6 +52,7 @@ export default function Form() {
 </div>
 }
 
-function _onSubmit(e) {
+function _onSubmit(e, setDisabled) {
   e.preventDefault();
+  setDisabled(true);
 }

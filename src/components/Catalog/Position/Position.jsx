@@ -27,11 +27,6 @@ function Position({ position }) {
         <p><PositionImage fileName={position.files.image.fileName} title={position.title} /></p>
       </div>
     </div>
-    {/* <div className="row justify-content-center">
-      <div className="col-md-8 mb-5">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero nulla delectus sit vel magnam, ad voluptatem hic. Maxime ipsam quibusdam eius exercitationem iusto, totam possimus dolore magnam voluptatum illum consequuntur.</p>
-      </div>
-    </div> */}
 
     <div className="row justify-content-center">
       {position.description ? <div className="col-md-8"
@@ -60,6 +55,11 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?alias=${
       return;
     }
     const res = await response.json();
+    return res;
+  })
+  .then(res => {
+    document.title = `${res.level.title} ${res.title}`;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', `${res.level.title} ${res.title} от компании УралБурПроект`);
     return res;
   })
   .then(res => {

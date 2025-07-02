@@ -33,6 +33,11 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAl
     return res;
   })
   .then(res => {
+    document.title = res.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', `${res.title} от компании УралБурПроект`);
+    return res;
+  })
+  .then(res => {
     const root = ReactDOM.createRoot(document.getElementById("headBannerSection"));
     root.render(<HeadBannerSection template={res} />);
   })
