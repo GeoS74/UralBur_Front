@@ -68,13 +68,15 @@ function _animate($) {
 }
 
 Promise.resolve()
-  .then(_ => {
-    if (document.getElementById("testimonialSlider").innerHTML) {
-      _animate(jQuery);
-      connector.del("Testimonial");
-      throw 1;
-    }
-  })
+  // .then(_ => {
+  //   if (document.getElementById("testimonialSlider").innerHTML) {
+  //     connector.del("Testimonial");
+  //     jQuery(window).on('load', function() {
+  //       _animate(jQuery);
+  //     });
+  //     throw 1;
+  //   }
+  // })
   .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`))
   .then(async response => {
     const res = await response.json();
