@@ -18,7 +18,14 @@ function ContactForm({ contacts }) {
   </section>
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/contact/public`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("contactForm").innerHTML) {
+      connector.del("ContactForm");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/contact/public`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -27,3 +34,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/contact/public`)
     const root = ReactDOM.createRoot(document.getElementById("contactForm"));
     root.render(<ContactForm contacts={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

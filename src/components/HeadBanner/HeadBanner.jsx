@@ -7,7 +7,7 @@ function HeadBanner({ template }) {
   React.useEffect(() => connector.del("HeadBanner"));
 
   // return <div className="slider-item" style={{"backgroundImage": `url('${serviceHost("mcontent")}/api/mcontent/static/images/slider/${e.image.fileName}')`}}>
-  return <div className="slider-item" style={{"backgroundImage": `url(images/industrial_hero_3.jpg)`}}>
+  return <div className="slider-item" style={{ "backgroundImage": `url(images/industrial_hero_3.jpg)` }}>
     <div className="container">
       <div className="row slider-text align-items-center justify-content-center">
         <div className="col-md-8 text-center col-sm-12 element-animate pt-5">
@@ -22,7 +22,14 @@ function HeadBanner({ template }) {
 
 const alias = window.location.pathname.split("/").pop().slice(0, -5) || 'index';
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/${alias}`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("headBanner").innerHTML) {
+      connector.del("HeadBanner");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/${alias}`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -31,3 +38,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/${alias}`)
     const root = ReactDOM.createRoot(document.getElementById("headBanner"));
     root.render(<HeadBanner template={res} />);
   })
+  .catch(error => {
+    if(error instanceof Error) console.log(error.message);
+  });

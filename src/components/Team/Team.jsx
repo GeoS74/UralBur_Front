@@ -31,7 +31,14 @@ function Items({ team }) {
   </div>)
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/team/public/?isPublic=1`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("team").innerHTML) {
+      connector.del("Team");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/team/public/?isPublic=1`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -40,3 +47,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/team/public/?isPublic=1`)
     const root = ReactDOM.createRoot(document.getElementById("team"));
     root.render(<Team team={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

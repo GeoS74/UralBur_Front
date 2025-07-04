@@ -83,7 +83,14 @@ const levelsFetch = fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level
 const positionsFetch = fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${getLevelAlias()}`);
 
 
-Promise.all([levelsFetch, levelsFetchAll, positionsFetch])
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("sectionPosition").innerHTML) {
+      connector.del("Section");
+      throw 1;
+    }
+  })
+  .then(_ => Promise.all([levelsFetch, levelsFetchAll, positionsFetch]))
   .then(responses => Promise.all(responses.map(async res => await res.json())))
   .then(([levelsFetch, levelsFetchAll, positionsFetch]) => {
     if (!positionsFetch.length && !levelsFetch.childs.length) {
@@ -96,6 +103,9 @@ Promise.all([levelsFetch, levelsFetchAll, positionsFetch])
   .then(responses => {
     const root = ReactDOM.createRoot(document.getElementById("sectionPosition"));
     root.render(<Section levels={responses[0]} levelsAll={responses[1]} positions={responses[2]} alias={alias} />);
+  })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
   });
 
 // fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${getLevelAlias()}`)

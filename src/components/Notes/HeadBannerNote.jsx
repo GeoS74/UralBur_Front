@@ -2,12 +2,12 @@ import serviceHost from "../libs/service.host.js";
 import connector from "../libs/connector.js";
 import config from "../config.js";
 
-connector.add("headBannerNote");
+connector.add("HeadBannerNote");
 
-function HeadBannerSection({ template }) {
-  React.useEffect(() => connector.del("headBannerNote"));
+function HeadBannerNote({ template }) {
+  React.useEffect(() => connector.del("HeadBannerNote"));
 
-  return <div className="slider-item" style={{"backgroundImage": `url(images/industrial_hero_3.jpg)`}}>
+  return <div className="slider-item" style={{ "backgroundImage": `url(images/industrial_hero_3.jpg)` }}>
     <div className="container">
       <div className="row slider-text align-items-center justify-content-center">
         <div className="col-md-8 text-center col-sm-12 element-animate pt-5">
@@ -23,17 +23,24 @@ function HeadBannerSection({ template }) {
 //   return (limit && text.length > limit) ? text.substring(0, text.indexOf(".", limit) + 1) : text;
 // }
 
-function getAlias(){
-  if(config.node == 'dev') {
+function getAlias() {
+  if (config.node == 'dev') {
     return URL.parse(window.location).searchParams.get('alias');
   }
   let f = URL.parse(window.location).pathname.split('/');
-  return f[f.length-1].slice(0, -5);
+  return f[f.length - 1].slice(0, -5);
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/${getAlias()}`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("headBannerNote").innerHTML) {
+      connector.del("HeadBannerNote");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/${getAlias()}`))
   .then(async response => {
-    if(response.status == 404) {
+    if (response.status == 404) {
       window.location.href = '404.html';
       return;
     }
@@ -42,5 +49,8 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/${getAlias()}`)
   })
   .then(res => {
     const root = ReactDOM.createRoot(document.getElementById("headBannerNote"));
-    root.render(<HeadBannerSection template={res} />);
+    root.render(<HeadBannerNote template={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

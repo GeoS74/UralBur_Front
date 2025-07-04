@@ -23,7 +23,14 @@ function Progress({ progress }) {
 
 const limit = (new URL(import.meta.url)).searchParams.get('limit') || 3;
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/progress/public/?isPublic=1&limit=${limit}`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("progress").innerHTML) {
+      connector.del("Progress");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/progress/public/?isPublic=1&limit=${limit}`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -32,3 +39,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/progress/public/?isPublic=1&limit
     const root = ReactDOM.createRoot(document.getElementById("progress"));
     root.render(<Progress progress={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

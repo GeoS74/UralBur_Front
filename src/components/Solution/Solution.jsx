@@ -19,7 +19,7 @@ function Solution({ solutions }) {
       <div className="col-lg-4 order-lg-2">
         <div className="scaling-image h-100">
           <div className="frame h-100">
-            <div className="feature-img-bg h-100" style={{"backgroundImage": "url('images/industrial_feature_1.jpg')"}}></div>
+            <div className="feature-img-bg h-100" style={{ "backgroundImage": "url('images/industrial_feature_1.jpg')" }}></div>
           </div>
         </div>
       </div>
@@ -46,7 +46,14 @@ function Items({ items }) {
   </div>)
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/solution/public/?isPublic=1&limit=4`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("solution").innerHTML) {
+      connector.del("Solution");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/solution/public/?isPublic=1&limit=4`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -55,3 +62,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/solution/public/?isPublic=1&limit
     const root = ReactDOM.createRoot(document.getElementById("solution"));
     root.render(<Solution solutions={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });
