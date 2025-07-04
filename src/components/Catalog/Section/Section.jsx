@@ -78,17 +78,17 @@ function getLevelAlias() {
 }
 
 const alias = getLevelAlias()
-const levelsFetchAll = fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public`);
-const levelsFetch = fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`);
-const positionsFetch = fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${getLevelAlias()}`);
+function levelsFetchAll(){return fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public`)};
+function levelsFetch(){return fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`)};
+function positionsFetch(){return fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${getLevelAlias()}`)};
 
 
 Promise.resolve()
   .then(_ => {
-    if (document.getElementById("sectionPosition").innerHTML) {
-      connector.del("Section");
-      throw 1;
-    }
+    // if (document.getElementById("sectionPosition").innerHTML) {
+    //   connector.del("Section");
+    //   throw 1;
+    // }
   })
   .then(_ => Promise.all([levelsFetch, levelsFetchAll, positionsFetch]))
   .then(responses => Promise.all(responses.map(async res => await res.json())))
