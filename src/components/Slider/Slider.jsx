@@ -50,7 +50,14 @@ function _animate($) {
   });
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/slider/public/?isPublic=1`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("mainSlider").innerHTML) {
+      connector.del("Slider");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/slider/public/?isPublic=1`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -59,3 +66,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/slider/public/?isPublic=1`)
     const root = ReactDOM.createRoot(document.getElementById("mainSlider"));
     root.render(<Slider slides={res} />);
   })
+  .catch(error => {
+    if(error instanceof Error) console.log(error.message);
+  });

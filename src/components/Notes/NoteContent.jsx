@@ -19,7 +19,7 @@ function NoteContent({ note }) {
       </div>
     </div>
 
-     <div className="row justify-content-center" style={{ marginTop: 0 }}>
+    <div className="row justify-content-center" style={{ marginTop: 0 }}>
       <div className="col-md-8 mb-5">
         <h2 style={{ textAlign: "center" }}>&ldquo;{note.title}&rdquo;</h2>
       </div>
@@ -43,7 +43,14 @@ function getAlias() {
   return f[f.length - 1].slice(0, -5);
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/${getAlias()}`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("noteContent").innerHTML) {
+      connector.del("NoteContent");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/${getAlias()}`))
   .then(async response => {
     if (response.status == 404) {
       window.location.href = '404.html';
@@ -61,3 +68,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/${getAlias()}`)
     const root = ReactDOM.createRoot(document.getElementById("noteContent"));
     root.render(<NoteContent note={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

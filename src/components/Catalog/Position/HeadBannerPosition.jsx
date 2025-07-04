@@ -7,7 +7,7 @@ connector.add("headBannerPosition");
 function HeadBannerSection({ template }) {
   React.useEffect(() => connector.del("headBannerPosition"));
 
-  return <div className="slider-item" style={{"backgroundImage": `url(images/industrial_hero_3.jpg)`}}>
+  return <div className="slider-item" style={{ "backgroundImage": `url(images/industrial_hero_3.jpg)` }}>
     <div className="container">
       <div className="row slider-text align-items-center justify-content-center">
         <div className="col-md-8 text-center col-sm-12 element-animate pt-5">
@@ -19,17 +19,24 @@ function HeadBannerSection({ template }) {
   </div>
 }
 
-function getLevelAlias(){
-  if(config.node == 'dev') {
+function getLevelAlias() {
+  if (config.node == 'dev') {
     return URL.parse(window.location).searchParams.get('levelAlias');
   }
   let f = URL.parse(window.location).pathname.split('/');
-  return f[f.length-2];
+  return f[f.length - 2];
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("headBannerPosition").innerHTML) {
+      connector.del("headBannerPosition");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`))
   .then(async response => {
-    if(response.status == 404) {
+    if (response.status == 404) {
       window.location.href = '404.html';
       return;
     }
@@ -40,3 +47,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAl
     const root = ReactDOM.createRoot(document.getElementById("headBannerPosition"));
     root.render(<HeadBannerSection template={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

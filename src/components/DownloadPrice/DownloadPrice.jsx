@@ -5,7 +5,7 @@ connector.add("DownloadPrice");
 
 function DownloadPrice({ price }) {
   React.useEffect(() => connector.del("DownloadPrice"));
-  
+
   return <div className="container">
     <div className="row align-items-center" >
       <div className="col-lg-8">
@@ -19,7 +19,14 @@ function DownloadPrice({ price }) {
   </div>
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/price/public`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("downloadPrice").innerHTML) {
+      connector.del("DownloadPrice");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/price/public`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -28,3 +35,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/price/public`)
     const root = ReactDOM.createRoot(document.getElementById("downloadPrice"));
     root.render(<DownloadPrice price={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

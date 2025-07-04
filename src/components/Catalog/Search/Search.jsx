@@ -12,8 +12,6 @@ const converter = new Converter();
 function Search({ positions }) {
   React.useEffect(() => connector.del("Search"));
 
-  console.log(positions)
-
   if (!positions.length) {
     return <div className="container">
       <div className="row justify-content-center mb-5 element-animate">

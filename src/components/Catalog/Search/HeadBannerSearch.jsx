@@ -6,7 +6,7 @@ connector.add("HeadBannerSearch");
 function HeadBannerSearch() {
   React.useEffect(() => connector.del("HeadBannerSearch"));
 
-  return <div className="slider-item" style={{"backgroundImage": `url(images/industrial_hero_3.jpg)`}}>
+  return <div className="slider-item" style={{ "backgroundImage": `url(images/industrial_hero_3.jpg)` }}>
     <div className="container">
       <div className="row slider-text align-items-center justify-content-center">
         <div className="col-md-8 text-center col-sm-12 element-animate pt-5">
@@ -17,8 +17,8 @@ function HeadBannerSearch() {
     </div>
   </div>
 }
-    const root = ReactDOM.createRoot(document.getElementById("headBannerSearch"));
-    root.render(<HeadBannerSearch/>);
+const root = ReactDOM.createRoot(document.getElementById("headBannerSearch"));
+root.render(<HeadBannerSearch />);
 
 // fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${URL.parse(window.location).searchParams.get('levelAlias')}`)
 //   .then(async response => {

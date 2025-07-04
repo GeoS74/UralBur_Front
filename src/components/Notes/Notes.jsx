@@ -28,8 +28,8 @@ function Notes({ notes }) {
   </div>)
 }
 
-function getUrl(alias){
-  if(config.node == 'dev') {
+function getUrl(alias) {
+  if (config.node == 'dev') {
     return `simple-article.html?alias=${alias}`
   }
   return `simple-article/${alias}.html`
@@ -39,7 +39,14 @@ function _cut(text, limit) {
   return (limit && text.length > limit) ? text.substring(0, text.indexOf(".", limit) + 1) : text;
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/?isPublic=1&limit=2`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("notes").innerHTML) {
+      connector.del("Notes");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/?isPublic=1&limit=2`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -48,3 +55,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/note/public/?isPublic=1&limit=2`)
     const root = ReactDOM.createRoot(document.getElementById("notes"));
     root.render(<Notes notes={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

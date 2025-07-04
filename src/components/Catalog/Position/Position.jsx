@@ -30,9 +30,9 @@ function Position({ position }) {
 
     <div className="row justify-content-center">
       {position.description ? <div className="col-md-8"
-      dangerouslySetInnerHTML={{ __html: converter.markdownToHTML(position.description) }}
+        dangerouslySetInnerHTML={{ __html: converter.markdownToHTML(position.description) }}
       ></div> : <></>}
-       
+
     </div>
 
     <ViewPDF fileName={position.files.pdf.fileName} title={position.title} />
@@ -48,7 +48,14 @@ function getAlias() {
   return f[f.length - 1].slice(0, -5);
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?alias=${getAlias()}`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("position").innerHTML) {
+      connector.del("Position");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?alias=${getAlias()}`))
   .then(async response => {
     if (response.status == 404) {
       window.location.href = '404.html';
@@ -66,3 +73,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?alias=${
     const root = ReactDOM.createRoot(document.getElementById("position"));
     root.render(<Position position={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

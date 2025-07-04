@@ -67,7 +67,14 @@ function _animate($) {
   })
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("testimonialSlider").innerHTML) {
+      connector.del("Testimonial");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -76,3 +83,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`)
     const root = ReactDOM.createRoot(document.getElementById("testimonialSlider"));
     root.render(<Testimonial testimonials={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });

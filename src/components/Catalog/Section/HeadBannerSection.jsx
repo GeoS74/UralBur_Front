@@ -7,7 +7,7 @@ connector.add("HeadBannerSection");
 function HeadBannerSection({ template }) {
   React.useEffect(() => connector.del("HeadBannerSection"));
 
-  return <div className="slider-item" style={{"backgroundImage": `url(images/industrial_hero_3.jpg)`}}>
+  return <div className="slider-item" style={{ "backgroundImage": `url(images/industrial_hero_3.jpg)` }}>
     <div className="container">
       <div className="row slider-text align-items-center justify-content-center">
         <div className="col-md-8 text-center col-sm-12 element-animate pt-5">
@@ -19,15 +19,22 @@ function HeadBannerSection({ template }) {
   </div>
 }
 
-function getLevelAlias(){
-  if(config.node == 'dev') {
+function getLevelAlias() {
+  if (config.node == 'dev') {
     return URL.parse(window.location).searchParams.get('levelAlias');
   }
   let f = URL.parse(window.location).pathname.split('/');
-  return f[f.length-1].slice(0, -5);
+  return f[f.length - 1].slice(0, -5);
 }
 
-fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`)
+Promise.resolve()
+  .then(_ => {
+    if (document.getElementById("headBannerSection").innerHTML) {
+      connector.del("HeadBannerSection");
+      throw 1;
+    }
+  })
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`))
   .then(async response => {
     const res = await response.json();
     return res;
@@ -41,3 +48,6 @@ fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAl
     const root = ReactDOM.createRoot(document.getElementById("headBannerSection"));
     root.render(<HeadBannerSection template={res} />);
   })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });
