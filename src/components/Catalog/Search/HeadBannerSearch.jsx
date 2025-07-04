@@ -1,4 +1,3 @@
-import serviceHost from "../../libs/service.host.js";
 import connector from "../../libs/connector.js";
 
 connector.add("HeadBannerSearch");
@@ -20,12 +19,3 @@ function HeadBannerSearch() {
 const root = ReactDOM.createRoot(document.getElementById("headBannerSearch"));
 root.render(<HeadBannerSearch />);
 
-// fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${URL.parse(window.location).searchParams.get('levelAlias')}`)
-//   .then(async response => {
-//     const res = await response.json();
-//     return res;
-//   })
-//   .then(res => {
-//     const root = ReactDOM.createRoot(document.getElementById("headBannerSearch"));
-//     root.render(<HeadBannerSearch template={res} />);
-//   })
