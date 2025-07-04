@@ -53,6 +53,7 @@ function _animate($) {
 Promise.resolve()
   .then(_ => {
     if (document.getElementById("mainSlider").innerHTML) {
+      _animate(jQuery);
       connector.del("Slider");
       throw 1;
     }

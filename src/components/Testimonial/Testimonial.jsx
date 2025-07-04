@@ -70,6 +70,7 @@ function _animate($) {
 Promise.resolve()
   .then(_ => {
     if (document.getElementById("testimonialSlider").innerHTML) {
+      _animate(jQuery);
       connector.del("Testimonial");
       throw 1;
     }
