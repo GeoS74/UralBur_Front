@@ -75,7 +75,7 @@ Promise.resolve()
     //     _animate(jQuery);
     //   });
     //   throw 1;
-    // }
+    // } 
   })
   .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`))
   .then(async response => {
