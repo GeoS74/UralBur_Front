@@ -71,7 +71,12 @@ function _animate($) {
 // Разная логика для отрисовки компоненты с использование SSR в продакшене
 // и без него в разработке.
 // jQuery плагин owlCarousel меняет html код слайдера не лету,
-// поэтому нельзя его отрендерить в Puppeteer и вставить в страницу
+// поэтому нельзя его отрендерить в Puppeteer и вставить в страницу.
+// Для прода используется следующий подход: когда Puppeteer рендерит страницу
+// и получает данные с бека, он сериализует их в строку и записывает её в data-content
+// корневого div, при этом компоненту слайдера не рендерит.
+// При отрисовке в браузере клиента, проверятся наличие этого data-content,
+// после этого данные парсятся в json и передаются в компоненту для отрисовки
 if(config.node === 'dev'){
 
   Promise.resolve()
@@ -88,19 +93,19 @@ if(config.node === 'dev'){
     if (error instanceof Error) console.log(error.message);
   });
   
-} else {
+} else { // prod
 
   Promise.resolve()
-.then(_ => {
-  const slider = document.getElementById("testimonialSlider");
+  .then(_ => {
+    const slider = document.getElementById("testimonialSlider");
 
-  if(slider.dataset.content) {
-    const content = JSON.parse(slider.dataset.content);
-    const root = ReactDOM.createRoot(document.getElementById("testimonialSlider"));
-    root.render(<Testimonial testimonials={content} />);
-    throw 1;
-  }
-})
+    if(slider.dataset.content) {
+      const content = JSON.parse(slider.dataset.content);
+      const root = ReactDOM.createRoot(document.getElementById("testimonialSlider"));
+      root.render(<Testimonial testimonials={content} />);
+      throw 1;
+    }
+  })
   .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`))
   .then(async response => {
     const res = await response.json();
