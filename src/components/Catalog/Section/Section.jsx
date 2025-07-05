@@ -77,21 +77,21 @@ function getLevelAlias() {
   return f[f.length - 1].slice(0, -5);
 }
 
-const alias = getLevelAlias()
-function levelsFetchAll(){return fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public`)};
-function levelsFetch(){return fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`)};
-function positionsFetch(){return fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${getLevelAlias()}`)};
+const alias = getLevelAlias();
+const levelsFetchAll = _ => fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public`);
+const levelsFetch = _ => fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/level/public/${getLevelAlias()}`);
+const positionsFetch = _ => fetch(`${serviceHost("mcontent")}/api/mcontent/catalog/position/public/?levelAlias=${getLevelAlias()}`);
 
 
 Promise.resolve()
   .then(_ => {
-    // if (document.getElementById("sectionPosition").innerHTML) {
-    //   connector.del("Section");
-    //   throw 1;
-    // }
+    if (document.getElementById("sectionPosition").innerHTML) {
+      connector.del("Section");
+      throw 1;
+    }
   })
-  .then(_ => Promise.all([levelsFetch, levelsFetchAll, positionsFetch]))
-  .then(responses => Promise.all(responses.map(async res => await res.json())))
+  .then(async _ => await Promise.all([levelsFetch(), levelsFetchAll(), positionsFetch()]))
+  .then(res => Promise.all(res.map(r => r.json())))
   .then(([levelsFetch, levelsFetchAll, positionsFetch]) => {
     if (!positionsFetch.length && !levelsFetch.childs.length) {
       window.location.href = '404.html';

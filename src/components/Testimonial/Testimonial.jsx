@@ -1,5 +1,6 @@
 import serviceHost from "../libs/service.host.js";
 import connector from "../libs/connector.js";
+import config from "../../components/config.js";
 
 connector.add("Testimonial");
 
@@ -67,7 +68,29 @@ function _animate($) {
   })
 }
 
-Promise.resolve()
+// Разная логика для отрисовки компоненты с использование SSR в продакшене
+// и без него в разработке.
+// jQuery плагин owlCarousel меняет html код слайдера не лету,
+// поэтому нельзя его отрендерить в Puppeteer и вставить в страницу
+if(config.node === 'dev'){
+
+  Promise.resolve()
+  .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`))
+  .then(async response => {
+    const res = await response.json();
+    return res;
+  })
+  .then(res => {
+    const root = ReactDOM.createRoot(document.getElementById("testimonialSlider"));
+    root.render(<Testimonial testimonials={res} />);
+  })
+  .catch(error => {
+    if (error instanceof Error) console.log(error.message);
+  });
+  
+} else {
+
+  Promise.resolve()
 .then(_ => {
   const slider = document.getElementById("testimonialSlider");
 
@@ -93,3 +116,5 @@ Promise.resolve()
   .catch(error => {
     if (error instanceof Error) console.log(error.message);
   });
+}
+
