@@ -32,11 +32,14 @@ function Position({ position }) {
       {position.description ? <div className="col-md-8"
         dangerouslySetInnerHTML={{ __html: converter.markdownToHTML(position.description) }}
       ></div> : <></>}
-
     </div>
 
+  <div id="pdfPreview"
+    data-filename={position.files.pdf.fileName}
+    data-title={position.title}
+  >
     <ViewPDF fileName={position.files.pdf.fileName} title={position.title} />
-
+  </div>
   </div>
 }
 
@@ -51,6 +54,11 @@ function getAlias() {
 Promise.resolve()
   .then(_ => {
     if (document.getElementById("position").innerHTML) {
+      const divPDF = document.getElementById('pdfPreview');
+      divPDF.innerHTML = '';
+
+      const root = ReactDOM.createRoot(document.getElementById("pdfPreview"));
+      root.render(<ViewPDF fileName={divPDF.dataset.filename} title={divPDF.dataset.title} />);
       connector.del("Position");
       throw 1;
     }
