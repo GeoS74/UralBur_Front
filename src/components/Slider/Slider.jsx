@@ -10,15 +10,15 @@ function Slider({ slides }) {
   })
 
   return slides.map((e) => <div key={e.id} className="slider-item" style={{ "backgroundImage": `url('${serviceHost("mcontent")}/api/mcontent/static/images/slider/${e.image.fileName}')` }}>
-    <div className="container">
-      <div className="row slider-text align-items-center justify-content-center">
-        <div className="col-lg-7 text-center col-sm-12 element-animate">
-          <h1 className="mb-4"><span>{e.title}</span></h1>
-          <p className="mb-5 w-75">{e.message}</p>
-        </div>
+  <div className="container">
+    <div className="row slider-text align-items-center justify-content-center">
+      <div className="col-lg-7 text-center col-sm-12 element-animate">
+        <h1 className="mb-4"><span>{e.title}</span></h1>
+        <p className="mb-5 w-75">{e.message}</p>
       </div>
     </div>
-  </div>)
+  </div>
+</div>)
 }
 
 function _animate($) {
@@ -52,13 +52,14 @@ function _animate($) {
 
 Promise.resolve()
   .then(_ => {
-    // if (document.getElementById("mainSlider").innerHTML) {
-    //   connector.del("Slider");
-    //   jQuery(window).on('load', function() {
-    //     _animate(jQuery);
-    //   });
-    //   throw 1;
-    // }
+    const slider = document.getElementById("mainSlider");
+
+    if(slider.dataset.content) {
+      const content = JSON.parse(slider.dataset.content);
+      const root = ReactDOM.createRoot(document.getElementById("mainSlider"));
+      root.render(<Slider slides={content} />);
+      throw 1;
+    }
   })
   .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/slider/public/?isPublic=1`))
   .then(async response => {
@@ -66,8 +67,11 @@ Promise.resolve()
     return res;
   })
   .then(res => {
-    const root = ReactDOM.createRoot(document.getElementById("mainSlider"));
-    root.render(<Slider slides={res} />);
+    const slider = document.getElementById("mainSlider");
+    slider.dataset.content = JSON.stringify(res);
+    connector.del("Slider");
+    // const root = ReactDOM.createRoot(document.getElementById("mainSlider"));
+    // root.render(<Slider slides={res} />);
   })
   .catch(error => {
     if(error instanceof Error) console.log(error.message);

@@ -68,23 +68,27 @@ function _animate($) {
 }
 
 Promise.resolve()
-  .then(_ => {
-    // if (document.getElementById("testimonialSlider").innerHTML) {
-    //   connector.del("Testimonial");
-    //   jQuery(window).on('load', function() {
-    //     _animate(jQuery);
-    //   });
-    //   throw 1;
-    // } 
-  })
+.then(_ => {
+  const slider = document.getElementById("testimonialSlider");
+
+  if(slider.dataset.content) {
+    const content = JSON.parse(slider.dataset.content);
+    const root = ReactDOM.createRoot(document.getElementById("testimonialSlider"));
+    root.render(<Testimonial testimonials={content} />);
+    throw 1;
+  }
+})
   .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/testimonial/public/?isPublic=1`))
   .then(async response => {
     const res = await response.json();
     return res;
   })
   .then(res => {
-    const root = ReactDOM.createRoot(document.getElementById("testimonialSlider"));
-    root.render(<Testimonial testimonials={res} />);
+    const slider = document.getElementById("testimonialSlider");
+    slider.dataset.content = JSON.stringify(res);
+    connector.del("Testimonial");
+    // const root = ReactDOM.createRoot(document.getElementById("testimonialSlider"));
+    // root.render(<Testimonial testimonials={res} />);
   })
   .catch(error => {
     if (error instanceof Error) console.log(error.message);
