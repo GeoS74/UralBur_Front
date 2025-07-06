@@ -5,8 +5,12 @@ services:
     volumes:
       - ./redis/redis.conf:/redis-stack.conf
       - ./redis/dump:/data
+    deploy:
+      resources:
+        limits:
+          memory: 400M
   pssr:
-    image: "geos74/pssr:0.0.3"
+    image: "geos74/pssr:0.0.4"
     environment:
       - SERVER_PORT=3250
       - REACT_HOST=react
@@ -16,6 +20,11 @@ services:
       - DB_PASS=mypassword
       - ROOT_SELECTOR=#loadingComplete
       - TTL_KEY=86400
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+    restart: on-failure
   mauth_app:
     image: "geos74/mauth:1.0.1"
     environment:
@@ -26,7 +35,7 @@ services:
       - DB_NAME=mauth
       - DB_PASS=admin
       - JWT_TTL=1800
-      - JWT_SECRET_KEY=Fgry6_dfds
+      - JWT_SECRET_KEY=any_secret
       - VERIFICATION_TTL=10 minute
       - VERIFICATION_IGNORE=true
       - SESSION_TTL=30 day
@@ -53,7 +62,7 @@ services:
       - DB_NAME=admin
       - CREATE_AUTOINDEX=true
       - JWT_CHECK=true
-      - JWT_SECRET_KEY=Fgry6_dfds
+      - JWT_SECRET_KEY=any_secret
     volumes:
       - files-mcontent:/mcontent/files
       - init-db-mcontent:/mcontent/libs/db.init
@@ -71,15 +80,18 @@ services:
     volumes:
       - ./nginx/dev.admin.conf:/etc/nginx/conf.d/default.conf
   react:
-    image: "geos74/uralbur-front:0.0.6"
+    image: "geos74/uralbur-front:0.0.7"
     volumes:
       - ./nginx/dev.react.conf:/etc/nginx/conf.d/default.conf
   main:
-    image: "nginx"
+#    image: "nginx"
+    image: "geos74/nginx-custom:0.0.1"
     ports:
       - "8000:80"
     volumes:
+      - ./nginx/http.conf.template:/etc/nginx/http.conf.template
       - ./nginx/dev.front.conf:/etc/nginx/conf.d/default.conf
+      - nginx_cache:/var/cache/nginx
 volumes:
   init-db-mauth:
   db-mauth:
@@ -87,3 +99,4 @@ volumes:
   init-db-mcontent:
   files-mcontent:
   sitemap:
+  nginx_cache:
