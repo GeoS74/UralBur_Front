@@ -31,19 +31,19 @@ function listObjects(dir) {
           }
           // BUG DETECTED
           // файл pdf.worker.js не правильно минифицируется
-          // else if(parse.ext === '.js' && parse.name.indexOf('.min') === -1 && parse.name.indexOf('pdf.worker') === -1){
-          //   childProcess.execSync(`npx babel ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')} --presets=@babel/preset-env,minify`);
-          // }
-          // else if(parse.ext === '.html'){
-          //   const html = fs.readFileSync(pathToFile, 'utf-8');
-          //   const m = htmlMinifier.minify(html, minifyOptions);
-          //   fs.writeFileSync(path.join(parse.dir, parse.name + '.html'), m);
-          // }
-          // else if(parse.ext === '.css' && parse.name.indexOf('.min') === -1){
-          //   const html = fs.readFileSync(pathToFile, 'utf-8');
-          //   const m = htmlMinifier.minify(html, minifyOptions);
-          //   fs.writeFileSync(path.join(parse.dir, parse.name + '.css'), m);
-          // }
+          else if(parse.ext === '.js' && parse.name.indexOf('.min') === -1 && parse.name.indexOf('pdf.worker') === -1){
+            childProcess.execSync(`npx babel ${pathToFile} -o ${path.join(parse.dir, parse.name + '.js')} --presets=@babel/preset-env,minify`);
+          }
+          else if(parse.ext === '.html'){
+            const html = fs.readFileSync(pathToFile, 'utf-8');
+            const m = htmlMinifier.minify(html, minifyOptions);
+            fs.writeFileSync(path.join(parse.dir, parse.name + '.html'), m);
+          }
+          else if(parse.ext === '.css' && parse.name.indexOf('.min') === -1){
+            const html = fs.readFileSync(pathToFile, 'utf-8');
+            const m = htmlMinifier.minify(html, minifyOptions);
+            fs.writeFileSync(path.join(parse.dir, parse.name + '.css'), m);
+          }
           else {
 
             try {
