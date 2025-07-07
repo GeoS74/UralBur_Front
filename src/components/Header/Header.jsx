@@ -17,10 +17,21 @@ function getTemplateAlias() {
 
 await Promise.resolve()
   .then(_ => {
-    if(document.title) throw 1;
+    if (document.title) throw 1;
   })
   .then(_ => fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/${getTemplateAlias()}`))
   .then(async response => {
+    if (response.ok) {
+      const res = await response.json();
+      return res;
+    }
+    return fetch(`${serviceHost("mcontent")}/api/mcontent/template/public/index`)
+  })
+  .then(async response => {
+    if(!(response instanceof Response)) { // это не fetch
+      return response;
+    }
+
     if (response.ok) {
       const res = await response.json();
       return res;
@@ -32,6 +43,6 @@ await Promise.resolve()
     document.querySelector('meta[name="description"]')?.setAttribute('content', res.meta.description);
   })
   .catch(error => {
-      if(error instanceof Error) console.log(error.message);
-    })
+    if (error instanceof Error) console.log(error.message);
+  })
   .finally(_ => connector.del("Header"));
