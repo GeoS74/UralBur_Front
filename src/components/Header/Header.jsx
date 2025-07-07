@@ -15,6 +15,7 @@ function getTemplateAlias() {
   return f[1] || 'index';
 }
 
+// если шаблон не найден, пытается получить данные основной страницы
 await Promise.resolve()
   .then(_ => {
     if (document.title) throw 1;
