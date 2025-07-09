@@ -15,7 +15,7 @@ export default function Form() {
   }
  
   return <div className="col-md-6 mb-5 order-2">
-  <form action="#" method="post" onSubmit={e => _onSubmit(e, setDisabled)}>
+  <form onSubmit={e => _onSubmit(e, setDisabled)}>
     <div className="row">
       <div className="col-md-6 form-group">
         <label htmlFor="name">Имя</label>
