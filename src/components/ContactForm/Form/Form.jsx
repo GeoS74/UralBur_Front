@@ -15,7 +15,7 @@ export default function Form() {
   }
  
   return <div className="col-md-6 mb-5 order-2">
-  <form onSubmit={e => _onSubmit(e, setDisabled)}>
+  <form onSubmit={e => e.preventDefault()}>
     <div className="row">
       <div className="col-md-6 form-group">
         <label htmlFor="name">Имя</label>
@@ -45,14 +45,9 @@ export default function Form() {
     </div>
     <div className="row">
       <div className="col-md-6 form-group">
-        <input type="submit" value="Отправить" className="btn btn-primary px-3 py-3"/>
+        <div className="btn btn-primary px-3 py-3" onClick={() => setDisabled(true)}>Отправить</div>
       </div>
     </div>
   </form>
 </div>
-}
-
-function _onSubmit(e, setDisabled) {
-  e.preventDefault();
-  setDisabled(true);
 }
